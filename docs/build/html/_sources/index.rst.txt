@@ -29,12 +29,12 @@ The multi-functional feature is supported by a modularized Snakemake workflow de
 
 Iliad is set apart by empowering genetic data management and processing for reference and target datasets, independently or simultaneously.
 
-You 
+What you need to do:
 * provide an FTP link for the desired open-source raw or stored data OR
 * migrate locally hosted data into the cloned Iliad repository AND 
 
-Iliad 
-* will deliver the 'GWAS data' you need for your analyses
+What Iliad will do:
+* deliver the 'GWAS data' you need for your analyses
 
 .. _main-getting-started:
 
