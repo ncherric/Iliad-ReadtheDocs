@@ -38,4 +38,13 @@ Getting started
 
 * Please read our paper for a full understanding of how Iliad can best serve you and your genetic data processing road blocks `replace with paper link here <https://github.com/ncherric/Iliad-ReadtheDocs>`_.
 * Quickly learn how to install Iliad - visit the :ref:'Installation' page
-* Start processing your data right away - vist the :ref:'Tutorial'
+* Start processing your data right away - vist the :ref:'Tutorial' page
+
+.. toctree::
+   :caption: Getting started
+   :name: getting_started
+   :hidden:
+   :maxdepth: 1
+
+   getting_started/installation
+   tutorial/tutorial
