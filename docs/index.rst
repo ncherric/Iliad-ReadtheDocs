@@ -28,4 +28,14 @@ You
 * migrate locally hosted data into the cloned Iliad repository AND 
 
 Iliad 
-* will deliver the 'GWAS data' you need for your analyses 
+* will deliver the 'GWAS data' you need for your analyses
+
+.. _main-getting-started:
+
+---------------
+Getting started
+---------------
+
+* Please read our paper for a full understanding of how Iliad can best serve you and your genetic data processing road blocks `replace with paper link here <https://github.com/ncherric/Iliad-ReadtheDocs>`_.
+* Quickly learn how to install Iliad - visit the :ref:'Installation' page
+* Start processing your data right away - vist the :ref:'Tutorial'
