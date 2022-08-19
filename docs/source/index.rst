@@ -1,0 +1,68 @@
+.. iliad documentation master file, created by
+   sphinx-quickstart on Fri Aug 19 14:44:38 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+.. _manual-main:
+
+=========
+ILIAD
+=========
+
+.. image:: https://img.shields.io/badge/snakemake-≥6.3.0-green.svg
+    :target: https://snakemake.github.io
+
+.. image:: https://img.shields.io/badge/python-≥3.8.0-brightgreen.svg
+    :target: https://python.org
+
+.. image:: https://img.shields.io/badge/Singularity-≥3.6.4-blue.svg
+    :target: https://docs.sylabs.io/guides/3.6/user-guide/introduction.html
+
+Iliad is a multi-functional genomic data processing pipeline implemented via the Snakemake workflow management system, a singularity container, and a handful of conda environments.
+Instances of the Singularity container and Conda environments are automatically pulled down and created to build the right execution envioronment during workflow runtime, making light of the numerous required bioinformatic third-party software tools and dependencies.
+The multi-functional feature is supported by a modularized Snakemake workflow design and includes independent snakemake workflows to accomodate **many forms of GENOMIC DATA**.
+
+* Raw Sequence Read Data (fq)
+* Stored Sequence Read Data (cram)
+* SNP Array Data (idat)
+
+Iliad is set apart by empowering genetic data management and processing for reference and target datasets, independently or simultaneously.
+
+You 
+* provide an FTP link for the desired open-source raw or stored data OR
+* migrate locally hosted data into the cloned Iliad repository AND 
+
+Iliad 
+* will deliver the 'GWAS data' you need for your analyses
+
+.. _main-getting-started:
+
+---------------
+Getting started
+---------------
+
+* Please read our paper for a full understanding of how Iliad can best serve you and your genetic data processing road blocks `replace with paper link here <https://github.com/ncherric/Iliad-ReadtheDocs>`_.
+* Quickly learn how to install Iliad - visit the :ref:'Installation' page
+* Start processing your data right away - vist the :ref:'Tutorial' page
+
+.. toctree::
+   :caption: Getting started
+   :name: getting_started
+   :hidden:
+   :maxdepth: 1
+
+   getting_started/installation
+   tutorial/tutorial
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+
+.. Indices and tables
+.. ==================
+
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
