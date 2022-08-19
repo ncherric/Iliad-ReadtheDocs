@@ -88,6 +88,12 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = "Iliaddoc"
 
+html_logo = "ILIAD-logo.png"
+html_theme_options = {
+    'logo_only': True,
+    'display_version': False,
+}
+
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {

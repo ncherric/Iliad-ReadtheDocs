@@ -1,7 +1,7 @@
 .. _tutorial:
 
 ==================
-Snakemake Tutorial
+Iliad Tutorial
 ==================
 
 .. _Snakemake: https://snakemake.readthedocs.io
