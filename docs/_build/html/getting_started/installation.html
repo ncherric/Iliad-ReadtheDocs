@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; Iliad 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-argparse.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="ILIAD" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Iliad
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-via-conda-mamba">Installation via Conda/Mamba</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#full-installation">Full installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-installation">Minimal installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes-on-bioconda-as-a-package-source">Notes on Bioconda as a package source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-via-pip">Installation via pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-of-a-development-version-via-pip">Installation of a development version via pip</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Iliad</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting_started/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<span id="getting-started-installation"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
+<p>Snakemake is available on PyPi as well as through Bioconda and also from source code.
+You can use one of the following ways for installing Snakemake.</p>
+<section id="installation-via-conda-mamba">
+<span id="conda-install"></span><h2>Installation via Conda/Mamba<a class="headerlink" href="#installation-via-conda-mamba" title="Permalink to this heading"></a></h2>
+<p>This is the <strong>recommended</strong> way to install Snakemake,
+because it also enables Snakemake to <span class="xref std std-ref">handle software dependencies of your
+workflow</span>.</p>
+<p>First, you need to install a Conda-based Python3 distribution.
+The recommended choice is <a class="reference external" href="https://github.com/conda-forge/miniforge#mambaforge">Mambaforge</a> which not only provides the required Python and Conda commands,
+but also includes <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a> an extremely fast and robust replacement for the <a class="reference external" href="https://conda.pydata.org">Conda</a> package manager which is highly recommended.
+The default conda solver is a bit slow and sometimes has issues with <a class="reference external" href="https://github.com/conda/conda/issues/9905">selecting the latest package releases</a>.
+Therefore, we recommend to in any case use <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a>.</p>
+<p>In case you don’t use <a class="reference external" href="https://github.com/conda-forge/miniforge#mambaforge">Mambaforge</a> you can always install <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a> into any other Conda-based Python distribution with</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda install -n base -c conda-forge mamba
+</pre></div>
+</div>
+<section id="full-installation">
+<h3>Full installation<a class="headerlink" href="#full-installation" title="Permalink to this heading"></a></h3>
+<p>Snakemake can be installed with all goodies needed to run in any environment and for creating interactive reports via</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda activate base
+<span class="gp">$ </span>mamba create -c conda-forge -c bioconda -n snakemake snakemake
+</pre></div>
+</div>
+<p>from the <a class="reference external" href="https://bioconda.github.io">Bioconda</a> channel.
+This will install snakemake into an isolated software environment, that has to be activated with</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda activate snakemake
+<span class="gp">$ </span>snakemake --help
+</pre></div>
+</div>
+<p>Installing into isolated environments is best practice in order to avoid side effects with other packages.</p>
+<p>Note that full installation is not possible from <strong>Windows</strong>, because some of the dependencies are Unix (Linux/MacOS) only.
+For Windows, please use the minimal installation below.</p>
+</section>
+<section id="minimal-installation">
+<h3>Minimal installation<a class="headerlink" href="#minimal-installation" title="Permalink to this heading"></a></h3>
+<p>A minimal version of Snakemake which only depends on the bare necessities can be installed with</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda activate base
+<span class="gp">$ </span>mamba create -c bioconda -c conda-forge -n snakemake snakemake-minimal
+</pre></div>
+</div>
+<p>In contrast to the full installation, which depends on some Unix (Linux/MacOS) only packages, this also works on Windows.</p>
+</section>
+<section id="notes-on-bioconda-as-a-package-source">
+<h3>Notes on Bioconda as a package source<a class="headerlink" href="#notes-on-bioconda-as-a-package-source" title="Permalink to this heading"></a></h3>
+<p>Note that Snakemake is available via Bioconda for historical, reproducibility, and continuity reasons (although it is not limited to biology applications at all).
+However, it is easy to combine Snakemake installation with other channels, e.g., by prefixing the package name with <code class="docutils literal notranslate"><span class="pre">::bioconda</span></code>, i.e.,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda activate base
+<span class="gp">$ </span>mamba create -n some-env -c conda-forge bioconda::snakemake bioconda::snakemake-minimal ...
+</pre></div>
+</div>
+</section>
+</section>
+<section id="installation-via-pip">
+<h2>Installation via pip<a class="headerlink" href="#installation-via-pip" title="Permalink to this heading"></a></h2>
+<p>Instead of conda, snakemake can be installed with pip.
+However, note that snakemake has non-python dependencies, such that the pip based installation has a limited functionality if those dependencies are not manually installed in addition.</p>
+<p>A list of Snakemake’s dependencies can be found within its <a class="reference external" href="https://bioconda.github.io/recipes/snakemake/README.html">meta.yaml conda recipe</a>.</p>
+</section>
+<section id="installation-of-a-development-version-via-pip">
+<h2>Installation of a development version via pip<a class="headerlink" href="#installation-of-a-development-version-via-pip" title="Permalink to this heading"></a></h2>
+<p>If you want to quickly try out an unreleased version from the snakemake repository (which you cannot get via bioconda, yet), for example to check whether a bug fix works for you workflow, you can get the current state of the main branch with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mamba create --only-deps -n snakemake-main snakemake
+<span class="gp">$ </span>conda activate snakemake-main
+<span class="gp">$ </span>pip install git+https://github.com/snakemake/snakemake
+</pre></div>
+</div>
+<p>You can also install the current state of another branch or the repository state at a particular commit.
+For information on the syntax for this, see <a class="reference external" href="https://pip.pypa.io/en/stable/topics/vcs-support/#git">the pip documentation on git support</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="ILIAD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2022, Noah Herrick.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
