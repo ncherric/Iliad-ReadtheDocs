@@ -26,7 +26,7 @@ Given that Mamba is installed, run
 
 .. code-block:: console
 
-    $ mamba create -c conda-forge -c bioconda --name snakemake snakemake snakedeploy
+    $ mamba create -c conda-forge -c bioconda --name snakemake snakemake snakedeploy openpyxl
 
 to install both Snakemake and Snakedeploy in an isolated environment.
 For all following commands ensure that this environment is activated via

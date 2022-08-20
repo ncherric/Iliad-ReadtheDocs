@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/js/custom.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -87,7 +88,7 @@ It largely reduces the learning curve and dependency installation by taking adva
 <p>Snakemake and Snakedeploy are best installed via the <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba package manager</a> (a drop-in replacement for conda).
 If you have neither Conda nor Mamba, it can be installed via <a class="reference external" href="https://github.com/conda-forge/miniforge#mambaforge">Mambaforge</a>. For other options see <a class="reference external" href="https://github.com/mamba-org/mamba">here</a>.</p>
 <p>Given that Mamba is installed, run</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mamba create -c conda-forge -c bioconda --name snakemake snakemake snakedeploy
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mamba create -c conda-forge -c bioconda --name snakemake snakemake snakedeploy openpyxl
 </pre></div>
 </div>
 <p>to install both Snakemake and Snakedeploy in an isolated environment.
