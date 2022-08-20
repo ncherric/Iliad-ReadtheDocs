@@ -39,7 +39,7 @@ For all following commands ensure that this environment is activated via
 Step 2: Install Singularity
 ============================
 
-Follow the `instructions guide <https://docs.sylabs.io/guides/3.6/user-guide/quick_start.html>` provided by Singularity to install the program under the Operating System of your choosing.
+Follow the `instructions guide <https://docs.sylabs.io/guides/3.6/user-guide/quick_start.html>`_ provided by Singularity to install the program under the Operating System of your choosing.
 
 
 Step 3: Deploy workflow
