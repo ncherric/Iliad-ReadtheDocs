@@ -10,95 +10,97 @@
 Installation
 ============
 
-Snakemake is available on PyPi as well as through Bioconda and also from source code.
-You can use one of the following ways for installing Snakemake.
+
+Iliad is Snakemake workflow management system and can be cloned from the `GitHub repository <https://github.com/ncherric/Iliad>`_.
+It largely reduces the learning curve and dependency installation by taking advantage of pre-built execution environments for Iliad, but still requires the installation of the native package manager for the Snakemake application itself and Singularity.
 
 .. _conda-install:
 
-Installation via Conda/Mamba
+Step 1: Install Snakemake and Snakedeploy
 ============================
 
-This is the **recommended** way to install Snakemake,
-because it also enables Snakemake to :ref:`handle software dependencies of your
-workflow <integrated_package_management>`.
+Snakemake and Snakedeploy are best installed via the `Mamba package manager <https://github.com/mamba-org/mamba>`_ (a drop-in replacement for conda).
+If you have neither Conda nor Mamba, it can be installed via `Mambaforge <https://github.com/conda-forge/miniforge#mambaforge>`_. For other options see `here <https://github.com/mamba-org/mamba>`_.
 
-First, you need to install a Conda-based Python3 distribution.
-The recommended choice is Mambaforge_ which not only provides the required Python and Conda commands, 
-but also includes Mamba_ an extremely fast and robust replacement for the Conda_ package manager which is highly recommended.
-The default conda solver is a bit slow and sometimes has issues with `selecting the latest package releases <https://github.com/conda/conda/issues/9905>`_. 
-Therefore, we recommend to in any case use Mamba_.
-
-In case you don't use Mambaforge_ you can always install Mamba_ into any other Conda-based Python distribution with
+Given that Mamba is installed, run
 
 .. code-block:: console
 
-    $ conda install -n base -c conda-forge mamba
+    $ mamba create -c conda-forge -c bioconda --name snakemake snakemake snakedeploy
 
-Full installation
------------------
+to install both Snakemake and Snakedeploy in an isolated environment.
+For all following commands ensure that this environment is activated via
 
-Snakemake can be installed with all goodies needed to run in any environment and for creating interactive reports via
-
-.. code-block:: console
-
-    $ conda activate base
-    $ mamba create -c conda-forge -c bioconda -n snakemake snakemake
-
-from the `Bioconda <https://bioconda.github.io>`_ channel.
-This will install snakemake into an isolated software environment, that has to be activated with
 
 .. code-block:: console
 
     $ conda activate snakemake
-    $ snakemake --help
 
-Installing into isolated environments is best practice in order to avoid side effects with other packages.
+Step 2: Install Singularity
+============================
 
-Note that full installation is not possible from **Windows**, because some of the dependencies are Unix (Linux/MacOS) only.
-For Windows, please use the minimal installation below.
+Follow the `instructions guide <https://docs.sylabs.io/guides/3.6/user-guide/quick_start.html>` provided by Singularity to install the program under the Operating System of your choosing.
 
-Minimal installation
---------------------
 
-A minimal version of Snakemake which only depends on the bare necessities can be installed with
+Step 3: Deploy workflow
+============================
 
-.. code-block:: console
+Given that Snakemake and Snakedeploy are installed and available (see Step 1), the workflow can be deployed as follows.
 
-    $ conda activate base
-    $ mamba create -c bioconda -c conda-forge -n snakemake snakemake-minimal
-
-In contrast to the full installation, which depends on some Unix (Linux/MacOS) only packages, this also works on Windows.
-
-Notes on Bioconda as a package source
--------------------------------------
-
-Note that Snakemake is available via Bioconda for historical, reproducibility, and continuity reasons (although it is not limited to biology applications at all).
-However, it is easy to combine Snakemake installation with other channels, e.g., by prefixing the package name with ``::bioconda``, i.e.,
+First, create an appropriate project working directory on your system and enter it:
 
 .. code-block:: console
 
-    $ conda activate base
-    $ mamba create -n some-env -c conda-forge bioconda::snakemake bioconda::snakemake-minimal ...
+    $ mkdir -p path/to/project-workdir
+    $ cd path/to/project-workdir
 
-Installation via pip
-====================
+In all following steps, we will assume that you are inside of that directory.
 
-Instead of conda, snakemake can be installed with pip.
-However, note that snakemake has non-python dependencies, such that the pip based installation has a limited functionality if those dependencies are not manually installed in addition.
-
-A list of Snakemake's dependencies can be found within its `meta.yaml conda recipe <https://bioconda.github.io/recipes/snakemake/README.html>`_.
-
-
-Installation of a development version via pip
-=============================================
-
-If you want to quickly try out an unreleased version from the snakemake repository (which you cannot get via bioconda, yet), for example to check whether a bug fix works for you workflow, you can get the current state of the main branch with:
+Git clone the `GitHub repository <https://github.com/ncherric/Iliad>`_.
 
 .. code-block:: console
 
-    $ mamba create --only-deps -n snakemake-main snakemake
-    $ conda activate snakemake-main
-    $ pip install git+https://github.com/snakemake/snakemake
+    $ git clone https://github.com/ncherric/Iliad.git
+    $ cd path/to/project-workdir/Iliad
 
-You can also install the current state of another branch or the repository state at a particular commit.
-For information on the syntax for this, see `the pip documentation on git support <https://pip.pypa.io/en/stable/topics/vcs-support/#git>`_.
+Two important folders found in the Iliad directory are **workflow** and **config**.
+The former contains rules and scripts that a designated Snakefile in Iliad call on to run a specific module.
+The latter contains configuration files which will be modified in the next step in order to configure the workflow to your needs.
+Later, when executing the workflow, Snakemake will automatically find the main Snakefile in the workflow subfolder which is the **Raw Sequence Read Data** module.
+However, there are other Snakefiles that are specific to the other Modules:
+
+* Snakefile -> Raw Sequence Read Data
+* cram_Snakefile -> Stored Sequence Read Data
+* snpArray_Snakefile -> SNP Array Data
+* LiftoverTo38_Snakefile -> Submodule to liftover GRCh37 assembly VCF data to GRCh38 assembly
+* LiftoverTo37_Snakefile -> Submodule to liftover GRCh38 assembly VCF data to GRCh37 assembly
+
+
+Consider to put this directory under version control, e.g. by managing it via a (private) Github repository.
+Visit the Tutorial page for further info about each of the Modules in the bulleted list above.
+
+
+**side note**
+( Once this pipeline is publicly available, and added to the Snakemake Workflow Catalog, run below. For now, just **clone ABOVE** )
+
+.. code-block:: console
+
+    $ snakedeploy deploy-workflow https://github.com/snakemake-workflows/Iliad . --tag v1.0.0
+
+
+Step 4: Configure Workflow
+============================
+
+To configure this workflow, modify config/config.yaml according to your needs, following the explanations provided in the file.
+
+
+Step 5: Run workflow
+============================
+
+Given that the workflow has been properly deployed and configured, it can be executed as follows.
+
+For running the workflow while deploying any necessary software via singularity and conda (using the Mamba package manager by default), run Snakemake with
+
+snakemake --cores all --use-conda
+
+Snakemake will automatically detect the main Snakefile in the workflow subfolder and execute the workflow module that has been defined by the deployment in step 2.
