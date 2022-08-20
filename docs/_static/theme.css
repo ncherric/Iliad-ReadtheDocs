@@ -7,7 +7,7 @@
 
 .wy-side-nav-search a:before {
     /* display: block; */
-    content: url(../source/ILIAD-logo.png);
+    content: url(/img/ILIAD-logo.png);
     visibility: visible;
     /* transform: scale(.46); */
     transform-origin: left;

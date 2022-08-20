@@ -17,7 +17,7 @@ It largely reduces the learning curve and dependency installation by taking adva
 .. _conda-install:
 
 Step 1: Install Snakemake and Snakedeploy
-============================
+=============================================
 
 Snakemake and Snakedeploy are best installed via the `Mamba package manager <https://github.com/mamba-org/mamba>`_ (a drop-in replacement for conda).
 If you have neither Conda nor Mamba, it can be installed via `Mambaforge <https://github.com/conda-forge/miniforge#mambaforge>`_. For other options see `here <https://github.com/mamba-org/mamba>`_.
