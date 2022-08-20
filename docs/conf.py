@@ -45,7 +45,7 @@ extensions = [
 ]
 
 # Iliad theme (made by --).
-html_css_files = ["theme.css"]
+html_css_files = ["css/theme.css"]
 html_js_files = ["js/custom.js"]
 
 
