@@ -2,16 +2,16 @@
  ==================================================== */
  
  .wy-side-nav-search {
-    background-color: #002221;
+    background-color: #a47f19;
 }
 
 .wy-side-nav-search a:before {
-    display: block;
+    /* display: block; */
     content: url(../source/ILIAD-logo.png);
     visibility: visible;
-    transform: scale(.46);
+    /* transform: scale(.46); */
     transform-origin: left;
-    margin: -30px 0 -60px 0;
+    /* margin: -30px 0 -60px 0; */
 }
 
 .wy-side-nav-search a {
@@ -23,12 +23,12 @@
 .wy-menu-vertical header,
 .wy-menu-vertical p.caption,
 .rst-versions a {
-    color: rgb(3, 148, 117);
+    color: rgba(193, 176, 20, 0.799);
 }
 
 .wy-menu-vertical a.reference:hover,
 .wy-menu-vertical a.reference.internal:hover {
-    background: #039475;
+    background: #c7a86e;
     color: #fff;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .wy-nav-content .rst-content .warning .admonition-title {
-    background: #44CC11;
+    background: #eaed3b;
 }
 
 .wy-nav-content .highlight .kn {
@@ -68,11 +68,11 @@
 .wy-nav-content a.fa,
 .rst-content dl:not(.docutils) dt,
 .wy-nav-content .admonition.warning a {
-    color: rgb(3, 148, 117);
+    color: rgb(196, 181, 13);
 }
 
 .wy-nav-content a.reference {
-    color: rgb(3, 148, 117);
+    color: rgb(196, 181, 13);
     text-decoration: underline;
 }
 
@@ -86,7 +86,7 @@
   ==================================================== */
 
 .wy-nav-content footer a {
-    color: rgb(3, 148, 117);
+    color: rgb(196, 181, 13);
 }
 
 .keep-us-sustainable {
