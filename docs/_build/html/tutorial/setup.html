@@ -45,12 +45,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="tutorial.html">Iliad SNP Array Tutorial</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="tutorial.html#snp-array-module-dag">SNP Array Module DAG</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="background.html">Background</a></li>
-<li class="toctree-l3"><a class="reference internal" href="basics.html">Basics</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Setup</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setup</a></li>
 </ul>
 </li>
 </ul>
@@ -90,9 +87,9 @@ Make sure your current working directory is in this cloned repo as stated in the
 </div>
 <p>In that working directory you will find there are a number of directories with files and code to run each of the module pipelines.</p>
 <p><strong>FIRST</strong>, there is a <code class="docutils literal notranslate"><span class="pre">data/snp_array/idat</span></code> directory with a <code class="docutils literal notranslate"><span class="pre">readme.md</span></code> file. You must place all of your <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files in this folder.
-There should be two <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files for each sample: one green (_Grn.idat) and one red (_Red.idat).</p>
+There should be two <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files for each sample: one green <code class="docutils literal notranslate"><span class="pre">_Grn.idat</span></code> and one red <code class="docutils literal notranslate"><span class="pre">_Red.idat</span></code>.</p>
 <p><strong>SECOND</strong>, there is a configuration file with some default parameters, however, you MUST at least change the <code class="docutils literal notranslate"><span class="pre">workdirPath</span></code> parameter to the appropriate
-path leading up to and including <code class="docutils literal notranslate"><span class="pre">/Iliad</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">/Path/To/Iliad/</span></code>.</p>
+path leading up to and including <code class="docutils literal notranslate"><span class="pre">/Iliad</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">/Path/To/Iliad/</span></code>. The configuration file is found in <code class="docutils literal notranslate"><span class="pre">config/config.yaml</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">workdirPath</span><span class="p">:</span> <span class="o">/</span><span class="n">Path</span><span class="o">/</span><span class="n">To</span><span class="o">/</span><span class="n">Iliad</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -132,7 +129,7 @@ This means the user must specify which <code class="docutils literal notranslate
 </div>
 <p>and combined with other user-specified snakemake flags, of course, like <code class="docutils literal notranslate"><span class="pre">--cores</span></code>.</p>
 <p>In this module, the SNP Array Snakefile is also located in the <code class="docutils literal notranslate"><span class="pre">workflow</span></code> directory: <code class="docutils literal notranslate"><span class="pre">workflow/snpArray_Snakefile</span></code>.
-Users must invoke this <code class="docutils literal notranslate"><span class="pre">snpArray_Snakefile</span></code> in order to run the workflow for <strong>THIS MODULE</strong>.</p>
+Users must invoke this <code class="docutils literal notranslate"><span class="pre">snpArray_Snakefile</span></code> in order to run the workflow for This <strong>SNP ARRAY MODULE</strong>.</p>
 </section>
 
 

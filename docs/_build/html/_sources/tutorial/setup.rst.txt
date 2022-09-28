@@ -18,10 +18,10 @@ Make sure your current working directory is in this cloned repo as stated in the
 In that working directory you will find there are a number of directories with files and code to run each of the module pipelines.
 
 **FIRST**, there is a ``data/snp_array/idat`` directory with a ``readme.md`` file. You must place all of your ``.idat`` files in this folder.
-There should be two ``.idat`` files for each sample: one green (_Grn.idat) and one red (_Red.idat). 
+There should be two ``.idat`` files for each sample: one green ``_Grn.idat`` and one red ``_Red.idat``. 
 
 **SECOND**, there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
-path leading up to and including ``/Iliad`` e.g. ``/Path/To/Iliad/``. 
+path leading up to and including ``/Iliad`` e.g. ``/Path/To/Iliad/``. The configuration file is found in ``config/config.yaml``.
 
 .. code:: python
 
@@ -67,6 +67,8 @@ This means the user must specify which ``Snakefile`` will be invoked with
 and combined with other user-specified snakemake flags, of course, like ``--cores``.
 
 In this module, the SNP Array Snakefile is also located in the ``workflow`` directory: ``workflow/snpArray_Snakefile``.
-Users must invoke this ``snpArray_Snakefile`` in order to run the workflow for **THIS MODULE**.
+Users must invoke this ``snpArray_Snakefile`` in order to run the workflow for This **SNP ARRAY MODULE**.
+
+
 
 
