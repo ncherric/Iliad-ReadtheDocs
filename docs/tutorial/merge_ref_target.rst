@@ -1,8 +1,8 @@
 .. _tutorial:
 
-==================================================
-Merge Reference and Target Data Submodule Tutorial
-==================================================
+================================================
+Merge Reference and Target Data Submodule How-To
+================================================
 
 .. hyperlinks
 .. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html

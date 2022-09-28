@@ -1,8 +1,8 @@
 .. _tutorial:
 
-==============================
-Iliad Stored Sequence Tutorial
-==============================
+============================
+Iliad Stored Sequence How-To
+============================
 
 .. hyperlinks
 .. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html

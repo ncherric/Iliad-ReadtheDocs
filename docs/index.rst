@@ -60,7 +60,7 @@ Getting started
    getting_started/installation
 
 .. toctree::
-   :caption: Tutorials
+   :caption: How-To Guides
    :name: tutorial
    :hidden:
    :maxdepth: 1

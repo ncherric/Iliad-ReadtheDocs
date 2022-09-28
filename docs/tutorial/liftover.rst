@@ -1,7 +1,7 @@
 .. _tutorial:
 
 ===========================
-Liftover Submodule Tutorial
+Liftover Submodule How-To
 ===========================
 
 .. hyperlinks
