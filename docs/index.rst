@@ -19,16 +19,17 @@ Iliad is a multi-functional **genomic data processing pipeline** implemented via
 Instances of the Singularity or Docker container and Conda environments are automatically pulled down and created to build the right execution envioronment during workflow runtime, making light of the numerous required bioinformatic third-party software tools and dependencies.
 The multi-functional feature is supported by a modularized Snakemake workflow design and includes independent snakemake workflows to accomodate **many forms of GENOMIC DATA** and translate them to comprehensible genotypes in a **variant call file (VCF)**.
 
-* Raw Sequence Read Data (fq)
-* Stored Sequence Read Data (cram)
-* SNP Array Data (idat)
+* Raw Sequence Read Data (.fq)
+* Stored Sequence Read Data (.cram)
+* SNP Array Data (.idat)
+* VCF data (.vcf/.vcf.gz)
 
 Iliad is set apart by empowering genetic data management and processing for reference and target datasets, independently or simultaneously.
 
 What you need to do:
 
-* provide an FTP link for the desired open-source raw or stored data OR
-* migrate locally hosted data into the cloned Iliad repository
+* **provide an FTP link** for the desired open-source raw or stored data OR
+* **migrate locally hosted data** into the cloned Iliad repository
 
 What Iliad will do:
 
@@ -42,7 +43,7 @@ Getting started
 
 * Please read our paper for a full understanding of how Iliad can best serve you and your genetic data processing road blocks `replace with paper link here <https://github.com/ncherric/Iliad-ReadtheDocs>`_.
 * Quickly learn how to install Iliad - visit the :ref:'Installation' page
-* Start processing your data right away - vist the :ref:'Tutorial' page
+* Start processing your data right away with tutorials on Iliad modules :ref:'Tutorial' page
 
 .. toctree::
    :caption: Getting started
@@ -51,7 +52,7 @@ Getting started
    :maxdepth: 1
 
    getting_started/installation
-   tutorial/tutorial
+   tutorial/snpArrayTutorial
 
 .. toctree::
    :maxdepth: 2

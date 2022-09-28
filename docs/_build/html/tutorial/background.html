@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iliad SNP Array Tutorial &mdash; Iliad 1.0 documentation</title>
+  <title>Background &mdash; Iliad 1.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/sphinx-argparse.css" type="text/css" />
@@ -59,9 +59,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Iliad SNP Array Tutorial</li>
+      <li>Background</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/tutorial/tutorial.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorial/background.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -69,32 +69,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="iliad-snp-array-tutorial">
-<span id="snparraytutorial"></span><h1>Iliad SNP Array Tutorial<a class="headerlink" href="#iliad-snp-array-tutorial" title="Permalink to this heading"></a></h1>
-<p>This tutorial introduces the genome-wide SNP array data processing module of the <a class="reference external" href="https://iliad-readthedocs.readthedocs.io/">Iliad</a> workflow developed using Snakemake workflow language.
-Please visit <a class="reference external" href="https://snakemake.readthedocs.io">Snakemake</a> for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while
-automatically determining dependencies amongst the rules. A <code class="docutils literal notranslate"><span class="pre">DAG</span></code> (directed acyclic graph) of jobs will be built each time to account for all of the samples and jobs
-that will executed either via job scheduler or local cores and will execute in parallel if multiple jobs are declared.
-Because of the Snakemake workflow system design, the <strong>Iliad</strong> workflow is scalable from single core machines to HPC clusters with job schedulers.</p>
-<p>The <strong>SNP array module</strong> is designed to process target data in your lab. Iliad is currently limited to <a class="reference external" href="https://support.illumina.com/">Illumina</a> microarray raw data processing and is configured for the
-human genotyping Infinium Multi-Ethic Global-8 Kit (<a class="reference external" href="https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html">MEGA</a>).
-We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (<a class="reference external" href="https://cloud.google.com/">GCP</a>).</p>
-<p><strong>SNP Array Module DAG</strong>
-.. image:: img/snp_array_module_dag.png</p>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">align</dt>
-<dd class="field-odd"><p>center</p>
-</dd>
-</dl>
-</div></blockquote>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
-</ul>
-</div>
+  <section id="background">
+<h1>Background<a class="headerlink" href="#background" title="Permalink to this heading"></a></h1>
+<p>Genome-wide microarray data remains one of most widely used methods to obtain genotypic information on collected DNA samples, despite the
+growing popularity and accessibility of genotyping by sequencing.
+To make a comprehensive genomic pipeline,
+we wanted to provide the means necessary for researchers to still access such a large body of data that remains important for many analyses.
+<code class="docutils literal notranslate"><span class="pre">GWAS</span> <span class="pre">data</span></code> can be used in many more applications than gene identification, such as ancestry estimation,
+historical population reconstruction, clinical genetic testing for diagnostic purposes, forensic analyses, new method validation for sequencing data.</p>
+<p>This module is currently limited to <a class="reference external" href="https://support.illumina.com/">Illumina</a> microarrays on the basis of the software tools and support and product file downloads.
+It is configured to the <a class="reference external" href="https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html">MEGA</a> microarray, meaning download files are pointed to MEGA support files and product files.
+It does possess the capability to be adapted to other microarrays. Pull requests and collobarations are welcomed.</p>
 </section>
 
 
