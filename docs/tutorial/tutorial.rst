@@ -115,6 +115,7 @@ Some other parameters that are pre-set and you might consider changing to your p
       mzip: multi-ethnic-global-8-d2-bpm.zip
       cluster: https://webdata.illumina.com/downloads/productfiles/multiethnic-global-8/v1-0/infinium-multi-ethnic-global-8-d1-cluster-file.zip
       czip: infinium-multi-ethnic-global-8-d1-cluster-file.zip
+
     urlSupportFiles:
       physicalGeneticCoordinates: https://support.illumina.com/content/dam/illumina-support/documents/downloads/productfiles/multiethnic-global/multi-ethnic-global-8-d2-physical-genetic-coordinates.zip
       pzip: multi-ethnic-global-8-d2-physical-genetic-coordinates.zip
@@ -144,11 +145,14 @@ If you plan to use on a local machine or self-built server without a job schedul
    $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --snakefile workflow/snpArray_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
 
 However, there is a file included in the ``Iliad`` directory named - ``snpArray-snakemake.sh`` that will be useful in batch job submission. 
+Below is an example snakemake workflow submission in SLURM job scheduler. 
 Please read the shell variables at the top of the script and customize to your own paths and resource needs.
 
 .. code-block:: console
 
    $ sbatch snpArray-snakemake.sh
+
+
 
 
 
