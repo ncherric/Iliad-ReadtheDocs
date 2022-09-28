@@ -30,9 +30,9 @@ The **SNP array module** is designed to process target data in your lab. Iliad i
 human genotyping Infinium Multi-Ethic Global-8 Kit (MEGA_).
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (GCP_).
 
---------------------
+
 SNP Array Module DAG
---------------------
+::::::::::::::::::::
 
 .. image:: img/snp_array_module_dag.png
    :align: center
