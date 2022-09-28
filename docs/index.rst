@@ -58,6 +58,13 @@ Getting started
    :maxdepth: 1
 
    getting_started/installation
+
+.. toctree::
+   :caption: Tutorials
+   :name: tutorial
+   :hidden:
+   :maxdepth: 1
+
    tutorial/tutorial
    tutorial/raw_sequence
    tutorial/stored_sequence
