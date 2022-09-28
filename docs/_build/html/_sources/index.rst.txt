@@ -59,7 +59,10 @@ Getting started
 
    getting_started/installation
    tutorial/tutorial
-   tutorial/rawsequence
+   tutorial/raw_sequence
+   tutorial/stored_sequence
+   tutorial/merge_ref_target
+   tutorial/liftover
 ..   tutorial/snpArrayTutorial
 
 .. toctree::
