@@ -1,11 +1,12 @@
-.. _tutorial-snpArrayTutorial:
+.. tutorial-snpArrayTutorial:
+.. _tutorial:
 
 ========================
 Iliad SNP Array Tutorial
 ========================
 
 .. hyperlinks
-.. _Iliad: https://iliad-readthedocs.readthedocs.io/
+.. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html
 .. _Snakemake: https://snakemake.readthedocs.io
 .. _Illumina: https://support.illumina.com/
 .. _MEGA: https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html
@@ -29,8 +30,10 @@ The **SNP array module** is designed to process target data in your lab. Iliad i
 human genotyping Infinium Multi-Ethic Global-8 Kit (MEGA_).
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (GCP_).
 
+--------------------
+SNP Array Module DAG
+--------------------
 
-**SNP Array Module DAG**
 .. image:: img/snp_array_module_dag.png
    :align: center
 
@@ -40,4 +43,3 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
    background
    basics
    setup
-   

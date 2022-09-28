@@ -21,7 +21,9 @@
         <script src="../_static/js/custom.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Background" href="background.html" />
+    <link rel="prev" title="Installation" href="../getting_started/installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,8 +43,17 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Iliad SNP Array Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#snp-array-module-dag">SNP Array Module DAG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup.html">Setup</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -70,8 +81,8 @@
            <div itemprop="articleBody">
              
   <section id="iliad-snp-array-tutorial">
-<span id="snparraytutorial"></span><h1>Iliad SNP Array Tutorial<a class="headerlink" href="#iliad-snp-array-tutorial" title="Permalink to this heading"></a></h1>
-<p>This tutorial introduces the genome-wide SNP array data processing module of the <a class="reference external" href="https://iliad-readthedocs.readthedocs.io/">Iliad</a> workflow developed using Snakemake workflow language.
+<span id="tutorial"></span><h1>Iliad SNP Array Tutorial<a class="headerlink" href="#iliad-snp-array-tutorial" title="Permalink to this heading"></a></h1>
+<p>This tutorial introduces the genome-wide SNP array data processing module of the <a class="reference external" href="https://iliad-readthedocs.readthedocs.io/en/latest/index.html">Iliad</a> workflow developed using Snakemake workflow language.
 Please visit <a class="reference external" href="https://snakemake.readthedocs.io">Snakemake</a> for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while
 automatically determining dependencies amongst the rules. A <code class="docutils literal notranslate"><span class="pre">DAG</span></code> (directed acyclic graph) of jobs will be built each time to account for all of the samples and jobs
 that will executed either via job scheduler or local cores and will execute in parallel if multiple jobs are declared.
@@ -79,15 +90,9 @@ Because of the Snakemake workflow system design, the <strong>Iliad</strong> work
 <p>The <strong>SNP array module</strong> is designed to process target data in your lab. Iliad is currently limited to <a class="reference external" href="https://support.illumina.com/">Illumina</a> microarray raw data processing and is configured for the
 human genotyping Infinium Multi-Ethic Global-8 Kit (<a class="reference external" href="https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html">MEGA</a>).
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (<a class="reference external" href="https://cloud.google.com/">GCP</a>).</p>
-<p><strong>SNP Array Module DAG</strong>
-.. image:: img/snp_array_module_dag.png</p>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">align</dt>
-<dd class="field-odd"><p>center</p>
-</dd>
-</dl>
-</div></blockquote>
+<section id="snp-array-module-dag">
+<h2>SNP Array Module DAG<a class="headerlink" href="#snp-array-module-dag" title="Permalink to this heading"></a></h2>
+<img alt="../_images/snp_array_module_dag.png" class="align-center" src="../_images/snp_array_module_dag.png" />
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
@@ -96,11 +101,15 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 </ul>
 </div>
 </section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../getting_started/installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="background.html" class="btn btn-neutral float-right" title="Background" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

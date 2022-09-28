@@ -52,7 +52,8 @@ Getting started
    :maxdepth: 1
 
    getting_started/installation
-   tutorial/snpArrayTutorial
+   tutorial/tutorial
+..   tutorial/snpArrayTutorial
 
 .. toctree::
    :maxdepth: 2
