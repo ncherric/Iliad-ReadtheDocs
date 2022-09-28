@@ -46,7 +46,7 @@ If you are on an HPC server, it may have a Singularity module available to load 
 
 Make sure Singularity is in your PATH and accessible by Snakemake.
 
-**Estimated time: 5-15 minutes**
+**Estimated time: 30-60 minutes**
 
 Step 3: Deploy workflow
 ============================
