@@ -28,7 +28,9 @@ path leading up to and including ``/Iliad`` e.g. ``/Path/To/Iliad/``.
     workdirPath: /Path/To/Iliad/
 
 Some other parameters that are pre-set and you might consider changing to your project needs include:
+
 * Homo sapiens GRCh38 release 104 reference genome
+
 .. code:: python
 
     ref:
@@ -37,6 +39,7 @@ Some other parameters that are pre-set and you might consider changing to your p
       build: GRCh38
 
 * Illumina MEGA_ microarray GRCh38 support and product files
+
 .. code:: python
 
     urlProductFiles:
