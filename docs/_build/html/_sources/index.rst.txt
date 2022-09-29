@@ -73,6 +73,20 @@ Getting started
 ..   tutorial/snpArrayTutorial
 
 .. toctree::
+   :caption: Project Info
+   :name: tutorial
+   :hidden:
+   :maxdepth: 1
+
+   projectinfo/citing
+   projectinfo/more_resources
+   projectinfo/faq
+   projectinfo/contributing
+   projectinfo/credits
+   projectinfo/changelog
+   projectinfo/license
+
+.. toctree::
    :maxdepth: 2
    :caption: Contents:
 
