@@ -1,8 +1,8 @@
 .. _tutorial:
 
-===========================
-Liftover Submodule Tutorial
-===========================
+========
+Liftover
+========
 
 .. hyperlinks
 .. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html

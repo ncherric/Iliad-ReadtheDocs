@@ -1,8 +1,8 @@
 .. _tutorial:
 
-=====================
-Iliad Stored Sequence
-=====================
+===============
+Iliad SNP Array
+===============
 
 .. hyperlinks
 .. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html
@@ -150,3 +150,8 @@ Please read the shell variables at the top of the script and customize to your o
 .. code-block:: console
 
    $ sbatch snpArray-snakemake.sh
+
+
+
+
+

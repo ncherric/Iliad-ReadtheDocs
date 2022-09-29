@@ -1,9 +1,8 @@
-.. tutorial-snpArrayTutorial:
 .. _tutorial:
 
-======================
-Iliad SNP Array How-To
-======================
+===============
+Iliad SNP Array
+===============
 
 .. hyperlinks
 .. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html

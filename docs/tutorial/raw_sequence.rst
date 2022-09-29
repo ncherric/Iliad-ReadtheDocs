@@ -1,7 +1,7 @@
 .. _tutorial:
 
 =========================
-Iliad Raw Sequence How-To
+Iliad Raw Sequence - Main
 =========================
 
 .. hyperlinks

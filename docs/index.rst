@@ -4,9 +4,9 @@
 
 .. _installation: https://iliad-readthedocs.readthedocs.io/en/latest/getting_started/installation.html
 
-=========
-ILIAD
-=========
+===========================
+ILIAD Genomic Data Pipeline
+===========================
 
 .. image:: https://img.shields.io/badge/snakemake-≥6.3.0-green.svg
     :target: https://snakemake.github.io
@@ -65,9 +65,9 @@ Getting started
    :hidden:
    :maxdepth: 1
 
-   tutorial/tutorial
    tutorial/raw_sequence
    tutorial/stored_sequence
+   tutorial/snp_array
    tutorial/merge_ref_target
    tutorial/liftover
 ..   tutorial/snpArrayTutorial
