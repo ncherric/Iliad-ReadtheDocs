@@ -96,16 +96,22 @@
              
   <section id="iliad-raw-sequence-main">
 <span id="tutorial-raw-sequence"></span><h1>Iliad Raw Sequence - Main<a class="headerlink" href="#iliad-raw-sequence-main" title="Permalink to this heading"></a></h1>
-<p>This tutorial introduces the genome-wide SNP array data processing module of the <a class="reference external" href="https://iliad-readthedocs.readthedocs.io/en/latest/index.html">Iliad</a> workflow developed using Snakemake workflow language.
+<p>This How-To Guide introduces the raw sequence read data processing module of the <a class="reference external" href="https://iliad-readthedocs.readthedocs.io/en/latest/index.html">Iliad</a> workflow developed using Snakemake workflow language.
 Please visit <a class="reference external" href="https://snakemake.readthedocs.io">Snakemake</a> for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while
 automatically determining dependencies amongst the rules. A <code class="docutils literal notranslate"><span class="pre">DAG</span></code> (directed acyclic graph) of jobs will be built each time to account for all of the samples and jobs
 that will executed either via job scheduler or local cores and will execute in parallel if multiple jobs are declared.
 Because of the Snakemake workflow system design, the <strong>Iliad</strong> workflow is scalable from single core machines to HPC clusters with job schedulers.</p>
-<p>The <strong>SNP array module</strong> is designed to process target data in your lab. Iliad is currently limited to <a class="reference external" href="https://support.illumina.com/">Illumina</a> microarray raw data processing and is configured for the
-human genotyping Infinium Multi-Ethic Global-8 Kit (<a class="reference external" href="https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html">MEGA</a>).
+<p>The <strong>Raw Sequence Module</strong> is designed to process FASTQ sequence files, whether they are single-end or paired-end reads.
+Currently, it is most common to prepare <strong>Reference Data</strong> Panels from open-source Whole-Genome Sequence (WGS) data such as 1000 Genomes Project <a class="reference external" href="http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/">data</a>.
+Reference data is paramount in preparation of target data samples, especially in human research studies where biogeographical ancestry is either the variable of interest
+or covariate in GWAS for instance.
+Depending on the level of data sharing, some research labs are unable to submit their target data to commercial Imputation services and will need to build their own <strong>Reference Data</strong> Panel
+as well as depend on open-source Imputation tools. We highly recommend <cite>Odyssey_: a semi-automated pipeline for phasing, imputation, and analysis of genome-wide genetic data</cite>.</p>
+<p>As sequence data gradually overtakes microarray data as the primary <strong>Target Data</strong> source, though, it is going to be mission critical
+to derive research related genotypic information quickly and efficiently from raw sequence data, too.
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (<a class="reference external" href="https://cloud.google.com/">GCP</a>).</p>
-<p><strong>SNP Array Module DAG</strong></p>
-<img alt="../_images/snp_array_module_dag.png" class="align-center" src="../_images/snp_array_module_dag.png" />
+<p><strong>Raw Sequence Module DAG</strong></p>
+<img alt="tutorial/img/raw_sequence_module_dag.png" class="align-center" src="tutorial/img/raw_sequence_module_dag.png" />
 <div class="toctree-wrapper compound">
 </div>
 <section id="background">
@@ -116,17 +122,17 @@ To make a comprehensive genomic pipeline,
 we wanted to provide the means necessary for researchers to still access such a large body of data that remains important for many analyses.
 <code class="docutils literal notranslate"><span class="pre">GWAS</span> <span class="pre">data</span></code> can be used in many more applications than gene identification, such as ancestry estimation,
 historical population reconstruction, clinical genetic testing for diagnostic purposes, forensic analyses, new method validation for sequencing data.</p>
-<p>This module is currently limited to <a class="reference external" href="https://support.illumina.com/">Illumina</a> microarrays on the basis of the software tools and support and product file downloads.
-It is configured to the <a class="reference external" href="https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html">MEGA</a> microarray, meaning download files are pointed to MEGA support files and product files.
+<p>This module is currently limited to <a href="#id1"><span class="problematic" id="id2">Illumina_</span></a> microarrays on the basis of the software tools and support and product file downloads.
+It is configured to the <a href="#id3"><span class="problematic" id="id4">MEGA_</span></a> microarray, meaning download files are pointed to MEGA support files and product files.
 It does possess the capability to be adapted to other microarrays. Pull requests and collobarations are welcomed.</p>
 </section>
 <section id="basics">
 <h2>Basics<a class="headerlink" href="#basics" title="Permalink to this heading"></a></h2>
 <p>The raw files from an Illumina sequencer are bead array files found in raw intensity data <code class="docutils literal notranslate"><span class="pre">.idat</span></code> format.
-These <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files are to be converted into Genotype Call <code class="docutils literal notranslate"><span class="pre">.gtc</span></code> files using <a class="reference external" href="https://support.illumina.com/downloads/iaap-genotyping-cli.html">iaap-cli</a> software. This software does have an
-end-user license agreement (<a class="reference external" href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://support.illumina.com/content/dam/illumina-support/documents/downloads/software/iaap/Illumina%20Array%20Analysis%20Platform%20IAAP%201.1%20EULA.pdf">EULA</a>) and is not included or distributed by Iliad. If the user chooses to configure a download of the
+These <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files are to be converted into Genotype Call <code class="docutils literal notranslate"><span class="pre">.gtc</span></code> files using <a href="#id5"><span class="problematic" id="id6">iaap-cli_</span></a> software. This software does have an
+end-user license agreement (<a href="#id7"><span class="problematic" id="id8">EULA_</span></a>) and is not included or distributed by Iliad. If the user chooses to configure a download of the
 program, it will be downloaded, independent from the Iliad repository distribution.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">.gtc</span></code> files are converted to a <code class="docutils literal notranslate"><span class="pre">.vcf</span></code> using <a class="reference external" href="https://samtools.github.io/bcftools/bcftools.html">bcftools</a> plug-in <a class="reference external" href="https://github.com/freeseek/gtc2vcf">gtc2vcf</a>.
+<p>The <code class="docutils literal notranslate"><span class="pre">.gtc</span></code> files are converted to a <code class="docutils literal notranslate"><span class="pre">.vcf</span></code> using <a class="reference external" href="https://samtools.github.io/bcftools/bcftools.html">bcftools</a> plug-in <a href="#id9"><span class="problematic" id="id10">gtc2vcf_</span></a>.
 This requires a reference genome assembly and Iliad downloads the user-configured reference genome fasta files.
 Iliad is configured to download <em>Homo sapiens</em> GRCh38 release 104 as default.</p>
 <p>Processing the <code class="docutils literal notranslate"><span class="pre">.vcf</span></code> is critical for realistic genetic data compatibility.
@@ -162,7 +168,7 @@ path leading up to and including <code class="docutils literal notranslate"><spa
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Illumina <a class="reference external" href="https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html">MEGA</a> microarray GRCh38 support and product files</p></li>
+<li><p>Illumina <a href="#id11"><span class="problematic" id="id12">MEGA_</span></a> microarray GRCh38 support and product files</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlProductFiles</span><span class="p">:</span>
   <span class="n">manifest</span><span class="p">:</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">webdata</span><span class="o">.</span><span class="n">illumina</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">productfiles</span><span class="o">/</span><span class="n">multiethnic</span><span class="o">-</span><span class="k">global</span><span class="o">-</span><span class="mi">8</span><span class="o">/</span><span class="n">v1</span><span class="o">-</span><span class="mi">0</span><span class="o">/</span><span class="n">build38</span><span class="o">/</span><span class="n">multi</span><span class="o">-</span><span class="n">ethnic</span><span class="o">-</span><span class="k">global</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">d2</span><span class="o">-</span><span class="n">bpm</span><span class="o">.</span><span class="n">zip</span>

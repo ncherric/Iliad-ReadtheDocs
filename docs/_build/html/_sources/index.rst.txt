@@ -47,7 +47,7 @@ Getting started
 
 * Quickly learn how to install Iliad - visit the Installation_ page
 
-* Start processing your data right away with one of the tutorials on Iliad modules
+* Start processing your data right away by following along one of the `HOW-TO GUIDES` on Iliad modules
 
   *  Raw Sequence Read Data (.fq)
   *  Stored Sequence Read Data (.cram)

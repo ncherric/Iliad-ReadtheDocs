@@ -15,7 +15,7 @@ Iliad SNP Array
 .. _gtc2vcf: https://github.com/freeseek/gtc2vcf
 .. _bcftools: https://samtools.github.io/bcftools/bcftools.html
 .. _installation: https://iliad-readthedocs.readthedocs.io/en/latest/getting_started/installation.html
-.. _module: raw sequence read module here
+.. _module: https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/raw_sequence.html
 .. _slides: https://slides.com/johanneskoester/snakemake-tutorial
 
 
