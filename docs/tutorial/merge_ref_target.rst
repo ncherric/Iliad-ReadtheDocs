@@ -1,4 +1,4 @@
-.. _tutorial:
+.. _tutorial/merge_ref_target:
 
 ===============================
 Merge Reference and Target Data

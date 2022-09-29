@@ -1,4 +1,4 @@
-.. _tutorial:
+.. _tutorial/snp_array:
 
 ===============
 Iliad SNP Array

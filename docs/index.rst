@@ -44,11 +44,15 @@ Getting started
 ---------------
 
 * Please read our paper for a full understanding of how Iliad can best serve you and your genetic data processing road blocks `replace with paper link here <https://github.com/ncherric/Iliad-ReadtheDocs>`_.
+
 * Quickly learn how to install Iliad - visit the Installation_ page
+
 * Start processing your data right away with one of the tutorials on Iliad modules
-  *  `Raw Sequence Read Data (.fq)`
-  *  `Stored Sequence Read Data (.cram)`
-  *  `SNP Array Data (.idat)`
+
+  *  Raw Sequence Read Data (.fq)
+  *  Stored Sequence Read Data (.cram)
+  *  SNP Array Data (.idat)
+
     .. make each of these into a link
 
 .. toctree::
@@ -70,7 +74,6 @@ Getting started
    tutorial/snp_array
    tutorial/merge_ref_target
    tutorial/liftover
-..   tutorial/snpArrayTutorial
 
 .. toctree::
    :caption: Project Info

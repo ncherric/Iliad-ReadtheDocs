@@ -1,4 +1,4 @@
-.. _tutorial:
+.. _tutorial/stored_sequence:
 
 =====================
 Iliad Stored Sequence
