@@ -46,16 +46,12 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 Background
 ==========
 
-Genome-wide microarray data remains one of most widely used methods to obtain genotypic information on collected DNA samples, despite the 
-growing popularity and accessibility of genotyping by sequencing.
-To make a comprehensive genomic pipeline, 
-we wanted to provide the means necessary for researchers to still access such a large body of data that remains important for many analyses. 
-``GWAS data`` can be used in many more applications than gene identification, such as ancestry estimation,
-historical population reconstruction, clinical genetic testing for diagnostic purposes, forensic analyses, new method validation for sequencing data. 
-
-This module is currently limited to Illumina microarrays on the basis of the software tools and support and product file downloads.
-It is configured to the MEGA microarray, meaning download files are pointed to MEGA support files and product files.
-It does possess the capability to be adapted to other microarrays. Pull requests and collobarations are welcomed.
+Sequencing data is becoming more accessible for researchers. It's primary role for years in GWAS was to serve as reference data to fill in the gaps of 
+target datasets containing large sample sizes through phasing and imputation techniques. This will still be a very important role over time because microarray data is 
+still commonly used and more sequence data means bigger and better reference sets for this purpose. Sequence data's current role, though, is already in transition for 
+its use as target data. The automation of the numerous steps to prepare data from a sequencer's raw output is crucial, so we developed `Iliad` with users of all levels 
+in mind to obtain variant call files with clean and reliable genotypes. It does possess the capability to be adapted and have add-ons.
+Pull requests and collobarations are welcomed.
 
 Basics
 ======
