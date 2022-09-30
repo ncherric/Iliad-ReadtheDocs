@@ -28,7 +28,7 @@ Currently, it is most common to prepare **Reference Data** Panels from open-sour
 Reference data is paramount in preparation of target data samples, especially in human research studies where biogeographical ancestry is either the variable of interest 
 or covariate in GWAS for instance.
 Depending on the level of data sharing, some research labs are unable to submit their target data to commercial Imputation services and will need to build their own **Reference Data** Panel 
-as well as depend on open-source Imputation tools. We highly recommend `Odyssey_: a semi-automated pipeline for phasing, imputation, and analysis of genome-wide genetic data`.
+as well as depend on open-source Imputation tools. We highly recommend Odyssey_: `a semi-automated pipeline for phasing, imputation, and analysis of genome-wide genetic data`.
 
 As sequence data gradually overtakes microarray data as the primary **Target Data** source, though, it is going to be mission critical 
 to derive research related genotypic information quickly and efficiently from raw sequence data, too.
