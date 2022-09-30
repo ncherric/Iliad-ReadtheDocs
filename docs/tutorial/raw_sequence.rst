@@ -53,19 +53,19 @@ we wanted to provide the means necessary for researchers to still access such a 
 ``GWAS data`` can be used in many more applications than gene identification, such as ancestry estimation,
 historical population reconstruction, clinical genetic testing for diagnostic purposes, forensic analyses, new method validation for sequencing data. 
 
-This module is currently limited to Illumina_ microarrays on the basis of the software tools and support and product file downloads.
-It is configured to the MEGA_ microarray, meaning download files are pointed to MEGA support files and product files.
+This module is currently limited to Illumina microarrays on the basis of the software tools and support and product file downloads.
+It is configured to the MEGA microarray, meaning download files are pointed to MEGA support files and product files.
 It does possess the capability to be adapted to other microarrays. Pull requests and collobarations are welcomed.
 
 Basics
 ======
 
 The raw files from an Illumina sequencer are bead array files found in raw intensity data ``.idat`` format.
-These ``.idat`` files are to be converted into Genotype Call ``.gtc`` files using iaap-cli_ software. This software does have an 
-end-user license agreement (EULA_) and is not included or distributed by Iliad. If the user chooses to configure a download of the 
+These ``.idat`` files are to be converted into Genotype Call ``.gtc`` files using iaap-cli software. This software does have an 
+end-user license agreement (EULA) and is not included or distributed by Iliad. If the user chooses to configure a download of the 
 program, it will be downloaded, independent from the Iliad repository distribution. 
 
-The ``.gtc`` files are converted to a ``.vcf`` using bcftools_ plug-in gtc2vcf_. 
+The ``.gtc`` files are converted to a ``.vcf`` using bcftools_ plug-in gtc2vcf. 
 This requires a reference genome assembly and Iliad downloads the user-configured reference genome fasta files. 
 Iliad is configured to download *Homo sapiens* GRCh38 release 104 as default.
 
@@ -110,7 +110,7 @@ Some other parameters that are pre-set and you might consider changing to your p
       release: 104
       build: GRCh38
 
-* Illumina MEGA_ microarray GRCh38 support and product files
+* Illumina MEGA microarray GRCh38 support and product files
 
 .. code:: python
 

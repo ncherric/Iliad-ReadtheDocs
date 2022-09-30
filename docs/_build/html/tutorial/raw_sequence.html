@@ -57,7 +57,7 @@
 <li class="toctree-l1"><a class="reference internal" href="stored_sequence.html">Iliad Stored Sequence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="snp_array.html">Iliad SNP Array</a></li>
 <li class="toctree-l1"><a class="reference internal" href="merge_ref_target.html">Merge Reference and Target Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="liftover.html">Liftover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="liftover.html">Lift Over Variants - 37 / 38</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Project Info</span></p>
 <ul>
@@ -122,17 +122,17 @@ To make a comprehensive genomic pipeline,
 we wanted to provide the means necessary for researchers to still access such a large body of data that remains important for many analyses.
 <code class="docutils literal notranslate"><span class="pre">GWAS</span> <span class="pre">data</span></code> can be used in many more applications than gene identification, such as ancestry estimation,
 historical population reconstruction, clinical genetic testing for diagnostic purposes, forensic analyses, new method validation for sequencing data.</p>
-<p>This module is currently limited to <a href="#id1"><span class="problematic" id="id2">Illumina_</span></a> microarrays on the basis of the software tools and support and product file downloads.
-It is configured to the <a href="#id3"><span class="problematic" id="id4">MEGA_</span></a> microarray, meaning download files are pointed to MEGA support files and product files.
+<p>This module is currently limited to Illumina microarrays on the basis of the software tools and support and product file downloads.
+It is configured to the MEGA microarray, meaning download files are pointed to MEGA support files and product files.
 It does possess the capability to be adapted to other microarrays. Pull requests and collobarations are welcomed.</p>
 </section>
 <section id="basics">
 <h2>Basics<a class="headerlink" href="#basics" title="Permalink to this heading"></a></h2>
 <p>The raw files from an Illumina sequencer are bead array files found in raw intensity data <code class="docutils literal notranslate"><span class="pre">.idat</span></code> format.
-These <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files are to be converted into Genotype Call <code class="docutils literal notranslate"><span class="pre">.gtc</span></code> files using <a href="#id5"><span class="problematic" id="id6">iaap-cli_</span></a> software. This software does have an
-end-user license agreement (<a href="#id7"><span class="problematic" id="id8">EULA_</span></a>) and is not included or distributed by Iliad. If the user chooses to configure a download of the
+These <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files are to be converted into Genotype Call <code class="docutils literal notranslate"><span class="pre">.gtc</span></code> files using iaap-cli software. This software does have an
+end-user license agreement (EULA) and is not included or distributed by Iliad. If the user chooses to configure a download of the
 program, it will be downloaded, independent from the Iliad repository distribution.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">.gtc</span></code> files are converted to a <code class="docutils literal notranslate"><span class="pre">.vcf</span></code> using <a class="reference external" href="https://samtools.github.io/bcftools/bcftools.html">bcftools</a> plug-in <a href="#id9"><span class="problematic" id="id10">gtc2vcf_</span></a>.
+<p>The <code class="docutils literal notranslate"><span class="pre">.gtc</span></code> files are converted to a <code class="docutils literal notranslate"><span class="pre">.vcf</span></code> using <a class="reference external" href="https://samtools.github.io/bcftools/bcftools.html">bcftools</a> plug-in gtc2vcf.
 This requires a reference genome assembly and Iliad downloads the user-configured reference genome fasta files.
 Iliad is configured to download <em>Homo sapiens</em> GRCh38 release 104 as default.</p>
 <p>Processing the <code class="docutils literal notranslate"><span class="pre">.vcf</span></code> is critical for realistic genetic data compatibility.
@@ -168,7 +168,7 @@ path leading up to and including <code class="docutils literal notranslate"><spa
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Illumina <a href="#id11"><span class="problematic" id="id12">MEGA_</span></a> microarray GRCh38 support and product files</p></li>
+<li><p>Illumina MEGA microarray GRCh38 support and product files</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlProductFiles</span><span class="p">:</span>
   <span class="n">manifest</span><span class="p">:</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">webdata</span><span class="o">.</span><span class="n">illumina</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">productfiles</span><span class="o">/</span><span class="n">multiethnic</span><span class="o">-</span><span class="k">global</span><span class="o">-</span><span class="mi">8</span><span class="o">/</span><span class="n">v1</span><span class="o">-</span><span class="mi">0</span><span class="o">/</span><span class="n">build38</span><span class="o">/</span><span class="n">multi</span><span class="o">-</span><span class="n">ethnic</span><span class="o">-</span><span class="k">global</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">d2</span><span class="o">-</span><span class="n">bpm</span><span class="o">.</span><span class="n">zip</span>
