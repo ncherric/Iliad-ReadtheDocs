@@ -188,4 +188,4 @@ Please read the shell variables at the top of the script and customize to your o
 
 .. code-block:: console
 
-   $ sbatch snpArray-snakemake.sh
+   $ sbatch snakemake.sh
