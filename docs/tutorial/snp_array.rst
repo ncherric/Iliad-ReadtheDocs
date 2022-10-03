@@ -32,7 +32,7 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 
 **SNP Array Module DAG**
 
-.. image:: img/snp_array_module_dag.png
+.. image:: img/snp_array_module_rulegraph.png
    :align: center
 
 .. toctree::
@@ -50,7 +50,7 @@ historical population reconstruction, clinical genetic testing for diagnostic pu
 
 This module is currently limited to Illumina_ microarrays on the basis of the software tools and support and product file downloads.
 It is configured to the MEGA_ microarray, meaning download files are pointed to MEGA support files and product files.
-It does possess the capability to be adapted to other microarrays. Pull requests and collobarations are welcomed.
+It does possess the capability to be adapted to other microarrays. Pull requests and contributions are welcomed.
 
 Basics
 ======
@@ -77,6 +77,8 @@ Setup
 Once the Installation_ of Iliad and its two dependencies has been completed, 
 you will find your new working directory within the ``PATH/TO/Iliad`` folder.
 Make sure your current working directory is in this cloned repo as stated in the installation.
+If the repository is not cloned in that fashion, there is a chance that your direcory will be improperly named as ``Iliad-main``. 
+
 
 .. code-block:: console
 
@@ -126,7 +128,7 @@ Some other parameters that are pre-set and you might consider changing to your p
 each module pipeline has a specific ``Snakefile``.
 Snakemake will automatically detect the main snakefile, which is named excatly as such and found in the ``workflow`` directory: ``workflow/Snakefile``.
 Iliad reserves the main snakefile for the main module, specifically the raw sequence read data module_.
-This means the user must specify which ``Snakefile`` will be invoked with 
+This means the user must specify which ``Snakefile`` will be invoked with the following:
 
 .. code-block:: console
 

@@ -105,7 +105,7 @@ Because of the Snakemake workflow system design, the <strong>Iliad</strong> work
 human genotyping Infinium Multi-Ethic Global-8 Kit (<a class="reference external" href="https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html">MEGA</a>).
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (<a class="reference external" href="https://cloud.google.com/">GCP</a>).</p>
 <p><strong>SNP Array Module DAG</strong></p>
-<img alt="../_images/snp_array_module_dag.png" class="align-center" src="../_images/snp_array_module_dag.png" />
+<img alt="../_images/snp_array_module_rulegraph.png" class="align-center" src="../_images/snp_array_module_rulegraph.png" />
 <div class="toctree-wrapper compound">
 </div>
 <section id="background">
@@ -118,7 +118,7 @@ we wanted to provide the means necessary for researchers to still access such a 
 historical population reconstruction, clinical genetic testing for diagnostic purposes, forensic analyses, and new method validation for sequencing data.</p>
 <p>This module is currently limited to <a class="reference external" href="https://support.illumina.com/">Illumina</a> microarrays on the basis of the software tools and support and product file downloads.
 It is configured to the <a class="reference external" href="https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html">MEGA</a> microarray, meaning download files are pointed to MEGA support files and product files.
-It does possess the capability to be adapted to other microarrays. Pull requests and collobarations are welcomed.</p>
+It does possess the capability to be adapted to other microarrays. Pull requests and contributions are welcomed.</p>
 </section>
 <section id="basics">
 <h2>Basics<a class="headerlink" href="#basics" title="Permalink to this heading"></a></h2>
@@ -139,7 +139,8 @@ Default thresholds, along with other default workflow configurations, can be fou
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
 <p>Once the <a class="reference external" href="https://iliad-readthedocs.readthedocs.io/en/latest/getting_started/installation.html">Installation</a> of Iliad and its two dependencies has been completed,
 you will find your new working directory within the <code class="docutils literal notranslate"><span class="pre">PATH/TO/Iliad</span></code> folder.
-Make sure your current working directory is in this cloned repo as stated in the installation.</p>
+Make sure your current working directory is in this cloned repo as stated in the installation.
+If the repository is not cloned in that fashion, there is a chance that your direcory will be improperly named as <code class="docutils literal notranslate"><span class="pre">Iliad-main</span></code>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> Iliad
 </pre></div>
 </div>
@@ -182,7 +183,7 @@ path leading up to and including <code class="docutils literal notranslate"><spa
 each module pipeline has a specific <code class="docutils literal notranslate"><span class="pre">Snakefile</span></code>.
 Snakemake will automatically detect the main snakefile, which is named excatly as such and found in the <code class="docutils literal notranslate"><span class="pre">workflow</span></code> directory: <code class="docutils literal notranslate"><span class="pre">workflow/Snakefile</span></code>.
 Iliad reserves the main snakefile for the main module, specifically the raw sequence read data <a class="reference external" href="https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/raw_sequence.html">module</a>.
-This means the user must specify which <code class="docutils literal notranslate"><span class="pre">Snakefile</span></code> will be invoked with</p>
+This means the user must specify which <code class="docutils literal notranslate"><span class="pre">Snakefile</span></code> will be invoked with the following:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake --snakefile workflow/snpArray_Snakefile
 </pre></div>
 </div>

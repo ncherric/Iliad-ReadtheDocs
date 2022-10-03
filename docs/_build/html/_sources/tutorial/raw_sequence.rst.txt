@@ -13,6 +13,9 @@ Iliad Raw Sequence - Main
 .. _bcftools: https://samtools.github.io/bcftools/bcftools.html
 .. _installation: https://iliad-readthedocs.readthedocs.io/en/latest/getting_started/installation.html
 .. _module: raw sequence read module here
+.. _protocol: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf
+.. _chr22: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/annotated/CCDG_13607_B01_GRM_WGS_2019-02-19_chr22.recalibrated_variants.annotated.txt
+.. _vcf: 
 
 .. _slides: https://slides.com/johanneskoester/snakemake-tutorial
 
@@ -37,7 +40,7 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 
 **Raw Sequence Module DAG**
 
-.. image:: img/raw_sequence_module_dag.png
+.. image:: img/raw_sequence_module_rulegraph.png
    :align: center
 
 .. toctree::
@@ -51,26 +54,48 @@ target datasets containing large sample sizes through phasing and imputation tec
 still commonly used and more sequence data means bigger and better reference sets for this purpose. Sequence data's current role, though, is already in transition for 
 its use as target data. The automation of the numerous steps to prepare data from a sequencer's raw output is crucial, so we developed `Iliad` with users of all levels 
 in mind to obtain variant call files with clean and reliable genotypes. It does possess the capability to be adapted and have add-ons.
-Pull requests and collobarations are welcomed.
+Pull requests and contributions are welcomed.
 
 Basics
 ======
 
-The raw files from an Illumina sequencer are bead array files found in raw intensity data ``.idat`` format.
-These ``.idat`` files are to be converted into Genotype Call ``.gtc`` files using iaap-cli software. This software does have an 
-end-user license agreement (EULA) and is not included or distributed by Iliad. If the user chooses to configure a download of the 
-program, it will be downloaded, independent from the Iliad repository distribution. 
+The raw files from a next-generation sequencer are FASTQ files found in ``.fastq`` or ``.fq`` format, and they are often zipped ``fastq.gz`` or ``fq.gz``.
+There are instances where the data may single-end reads or paired-end reads. In the case of **paired-end reads**, sample naming schemes can and will vary, 
+but will have some form of ``Sample1_R1.fq.gz`` and ``Sample1_R2.fq.gz``. Paired-end reads are sequenced from both ends of the specified DNA read length.
+`Iliad` raw sequence data module was designed to handle both types of sequence data, but was tested using paired-end reads.
+As the user, you have the choice to upload an Excel sheet or CSV file with no header and the following two fields:
 
-The ``.gtc`` files are converted to a ``.vcf`` using bcftools_ plug-in gtc2vcf. 
+.. code-block:: console
+
+    Sample   Unique sample identifier
+    URL   raw sequence data download FTP link
+
+
+If you already have the sequence files and are not downloading open-source data, you have the option to place your data into the ``Iliad/data/fastq/`` directory.
+You will still need to provide a separate ``samples.tsv`` file in both situations where the TSV file has a header line with only one field named ``sample``.
+
+.. code-block:: console
+
+    sample  HEADER
+    SAMPLE1 sample identifier
+    SAMPLE2 sample identifier
+
+
+These ``.fq.gz`` files will undergo multiplex concatenation if needed and sent to BWA mem alignment and sorting to created a sorted.bam file and it's index. 
 This requires a reference genome assembly and Iliad downloads the user-configured reference genome fasta files. 
 Iliad is configured to download *Homo sapiens* GRCh38 release 104 as default.
 
-Processing the ``.vcf`` is critical for realistic genetic data compatibility.
-Custom python scripts are called in rules to rename unconventional loci names to standardized ``rs IDs`` using dbSNP files.
-The default configuration file is set to download human_9606_b151_GRCh38p7 ``All_20180418.vcf.gz``.
+BCFtools is used to perform mpileup and call to perform variant calling on New York Genome Center (NYGC) annotated sites. `Iliad` downloads and uses the NYGC's 
+annotated SNP regions file per chromosomes (link to chr22_ file) - `recalibrated_variants.annotated.txt`.
+A README file can be found concerning the annotations protocol_.
+These chromosome annotations files consume roughly 70 GB of storage, so we process the files into a simple regions file with two fields and no header: CHROM POS.
+This reduces the file footprint to a little over 1 GB. The limitation of this file is `Homo sapiens` GRCh38 reference assembly.
+There are 124,954,769 variants to be called across chromosomes 1-22 and X.
 
-Once the ``vcf`` is processed, quality controls are performed based on the GenTrain and ClusterSep scores.
-Default thresholds, along with other default workflow configurations, can be found in your path to the configuration file: ``config/config.yaml``.
+This is a resource intensive task to be performed on many samples and so we reduce the serial runtime by splitting each chromosome regions file into even splits 
+that can be processed in parallel with job scheduling and management controlled by Snakemake. We can then concatenate the splits per chromosome per sample to obtain 23 
+chromosome VCFs for each sample. Samples are merged at each chromosome and the ID field in the VCF is annotated using BCFtools and dbSNP annotations vcf_ so that 
+each position is given a standardized ``rs ID``. The default configuration file is set to download human_9606_b151_GRCh38p7 ``All_20180418.vcf.gz``.
 
 Setup
 =====
@@ -78,6 +103,7 @@ Setup
 Once the Installation_ of Iliad and its two dependencies has been completed, 
 you will find your new working directory within the ``PATH/TO/Iliad`` folder.
 Make sure your current working directory is in this cloned repo as stated in the installation.
+If the repository is not cloned in that fashion, there is a chance that your direcory will be improperly named as ``Iliad-main``. 
 
 .. code-block:: console
 
@@ -85,10 +111,7 @@ Make sure your current working directory is in this cloned repo as stated in the
 
 In that working directory you will find there are a number of directories with files and code to run each of the module pipelines.
 
-**FIRST**, there is a ``data/snp_array/idat`` directory with a ``readme.md`` file. You must place all of your ``.idat`` files in this folder.
-There should be two ``.idat`` files for each sample: one green ``_Grn.idat`` and one red ``_Red.idat``. 
-
-**SECOND**, there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
+**FIRST**, there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
 path leading up to and including ``/Iliad`` e.g. ``/Path/To/Iliad/``. The configuration file is found in ``config/config.yaml``.
 
 .. code:: python
@@ -106,45 +129,60 @@ Some other parameters that are pre-set and you might consider changing to your p
       release: 104
       build: GRCh38
 
-* Illumina MEGA microarray GRCh38 support and product files
+* URL and path to FTP site housing the data for retrieval. Here is an example from 
 
 .. code:: python
 
-    urlProductFiles:
-      manifest:  https://webdata.illumina.com/downloads/productfiles/multiethnic-global-8/v1-0/build38/multi-ethnic-global-8-d2-bpm.zip
-      mzip: multi-ethnic-global-8-d2-bpm.zip
-      cluster: https://webdata.illumina.com/downloads/productfiles/multiethnic-global-8/v1-0/infinium-multi-ethnic-global-8-d1-cluster-file.zip
-      czip: infinium-multi-ethnic-global-8-d1-cluster-file.zip
+   url:
+      # ftp host
+      host: ftp://ftp.site.host.example
+      # ftp path
+      path: /path/to/data/files/
+      # number of directories that the desired file is in at ftp site
+      cutdirs: 5
 
-    urlSupportFiles:
-      physicalGeneticCoordinates: https://support.illumina.com/content/dam/illumina-support/documents/downloads/productfiles/multiethnic-global/multi-ethnic-global-8-d2-physical-genetic-coordinates.zip
-      pzip: multi-ethnic-global-8-d2-physical-genetic-coordinates.zip
-      rsidConversion: https://support.illumina.com/content/dam/illumina-support/documents/downloads/productfiles/multiethnic-global/multi-ethnic-global-8-d2-b150-rsids.zip
-      rzip: multi-ethnic-global-8-d2-b150-rsids.zip
-      rfile: Multi-EthnicGlobal_D2_b150_rsids.txt
+
+**SECOND**, there is a ``data/fastq`` directory with a ``readme.md`` file. You must place all of your ``.fq.gz`` files in this folder **IF you have the files already**.
+Otherwise, as mentioned above, `Iliad` features a downloading step, particularly from FTP sites where open-source genomic data is hosted.
+You will need to provide a table of either Excel or CSV format as seen below. There is no header line so simply replace Sample with your unique identifier for your sample and 
+URL for the specific URL path to the FTP site that hosts the data.
+
+.. list-table:: UserSampleTable.xlsx or UserSampleTable.csv
+   :widths: 25 25
+
+   * - Sample
+     - URL
+
+You'll notice in provided templates, there are multiple rows of the same sample. Looking closely, you will find that these samples are multiplexed e.g. same samples, 
+but sequenced multiple times on different lanes (L1, L2, etc.), and this is perfectly okay.
+
 
 **THIRD**,
 each module pipeline has a specific ``Snakefile``.
 Snakemake will automatically detect the main snakefile, which is named excatly as such and found in the ``workflow`` directory: ``workflow/Snakefile``.
-Iliad reserves the main snakefile for the main module, specifically the raw sequence read data module_.
-This means the user must specify which ``Snakefile`` will be invoked with 
+Iliad reserves the main snakefile for the main module, specifically this raw sequence read data module_.
+This means the user must specify which ``Snakefile`` will be invoked with the following:
 
 .. code-block:: console
 
-    $ snakemake --snakefile workflow/snpArray_Snakefile
+    $ snakemake --snakefile workflow/Snakefile
+
+**OR** since this module is the main snakefile, Snakemake will automatically detect it without the flag.
+
+.. code-block:: console
+
+    $ snakemake --cores 1
+
 
 and combined with other user-specified snakemake flags, of course, like ``--cores``.
-
-In this module, the SNP Array Snakefile is also located in the ``workflow`` directory: ``workflow/snpArray_Snakefile``.
-Users must invoke this ``snpArray_Snakefile`` in order to run the workflow for This **SNP ARRAY MODULE**.
 
 If you plan to use on a local machine or self-built server without a job scheduler the default command to run is the following:
 
 .. code-block:: console
 
-   $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --snakefile workflow/snpArray_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
+   $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
 
-However, there is a file included in the ``Iliad`` directory named - ``snpArray-snakemake.sh`` that will be useful in batch job submission. 
+However, there is a file included in the ``Iliad`` directory named - ``snakemake.sh`` that will be useful in batch job submission. 
 Below is an example snakemake workflow submission in SLURM job scheduler. 
 Please read the shell variables at the top of the script and customize to your own paths and resource needs.
 
