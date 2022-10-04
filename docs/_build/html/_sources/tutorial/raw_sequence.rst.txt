@@ -42,6 +42,7 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 
 .. image:: img/raw_sequence_module_rulegraph.png
    :align: center
+   :width: 400
 
 .. toctree::
    :maxdepth: 2
