@@ -104,8 +104,8 @@ Because of the Snakemake workflow system design, the <strong>Iliad</strong> work
 <p>The <strong>SNP array module</strong> is designed to process target data in your lab. Iliad is currently limited to <a class="reference external" href="https://support.illumina.com/">Illumina</a> microarray raw data processing and is configured for the
 human genotyping Infinium Multi-Ethic Global-8 Kit (<a class="reference external" href="https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html">MEGA</a>).
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (<a class="reference external" href="https://cloud.google.com/">GCP</a>).</p>
-<p><strong>SNP Array Module DAG</strong></p>
-<a class="reference internal image-reference" href="../_images/snp_array_module_rulegraph.png"><img alt="../_images/snp_array_module_rulegraph.png" class="align-center" src="../_images/snp_array_module_rulegraph.png" style="width: 400px;" /></a>
+<p><strong>SNP Array Module Rule Graph</strong></p>
+<a class="reference internal image-reference" href="../_images/snp_array_module_rulegraph.png"><img alt="../_images/snp_array_module_rulegraph.png" class="align-center" src="../_images/snp_array_module_rulegraph.png" style="width: 525px;" /></a>
 <div class="toctree-wrapper compound">
 </div>
 <section id="background">
@@ -145,9 +145,11 @@ If the repository is not cloned in that fashion, there is a chance that your dir
 </pre></div>
 </div>
 <p>In that working directory you will find there are a number of directories with files and code to run each of the module pipelines.</p>
-<p><strong>FIRST</strong>, there is a <code class="docutils literal notranslate"><span class="pre">data/snp_array/idat</span></code> directory with a <code class="docutils literal notranslate"><span class="pre">readme.md</span></code> file. You must place all of your <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files in this folder.
+<p><strong>FIRST</strong>,
+there is a <code class="docutils literal notranslate"><span class="pre">data/snp_array/idat</span></code> directory with a <code class="docutils literal notranslate"><span class="pre">readme.md</span></code> file. You must place all of your <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files in this folder.
 There should be two <code class="docutils literal notranslate"><span class="pre">.idat</span></code> files for each sample: one green <code class="docutils literal notranslate"><span class="pre">_Grn.idat</span></code> and one red <code class="docutils literal notranslate"><span class="pre">_Red.idat</span></code>.</p>
-<p><strong>SECOND</strong>, there is a configuration file with some default parameters, however, you MUST at least change the <code class="docutils literal notranslate"><span class="pre">workdirPath</span></code> parameter to the appropriate
+<p><strong>SECOND</strong>,
+there is a configuration file with some default parameters, however, you MUST at least change the <code class="docutils literal notranslate"><span class="pre">workdirPath</span></code> parameter to the appropriate
 path leading up to and including <code class="docutils literal notranslate"><span class="pre">/Iliad</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">/Path/To/Iliad/</span></code>. The configuration file is found in <code class="docutils literal notranslate"><span class="pre">config/config.yaml</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">workdirPath</span><span class="p">:</span> <span class="o">/</span><span class="n">Path</span><span class="o">/</span><span class="n">To</span><span class="o">/</span><span class="n">Iliad</span><span class="o">/</span>
 </pre></div>

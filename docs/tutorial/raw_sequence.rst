@@ -16,6 +16,7 @@ Iliad Raw Sequence - Main
 .. _protocol: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf
 .. _chr22: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/annotated/CCDG_13607_B01_GRM_WGS_2019-02-19_chr22.recalibrated_variants.annotated.txt
 .. _vcf: 
+.. _data: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/
 
 .. _slides: https://slides.com/johanneskoester/snakemake-tutorial
 
@@ -38,7 +39,7 @@ to derive research related genotypic information quickly and efficiently from ra
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (GCP_).
 
 
-**Raw Sequence Module DAG**
+**Raw Sequence Module Rule Graph**
 
 .. image:: img/raw_sequence_module_rulegraph.png
    :align: center
@@ -112,7 +113,8 @@ If the repository is not cloned in that fashion, there is a chance that your dir
 
 In that working directory you will find there are a number of directories with files and code to run each of the module pipelines.
 
-**FIRST**, there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
+**FIRST**, 
+there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
 path leading up to and including ``/Iliad`` e.g. ``/Path/To/Iliad/``. The configuration file is found in ``config/config.yaml``.
 
 .. code:: python
@@ -143,7 +145,8 @@ Some other parameters that are pre-set and you might consider changing to your p
       cutdirs: 5
 
 
-**SECOND**, there is a ``data/fastq`` directory with a ``readme.md`` file. You must place all of your ``.fq.gz`` files in this folder **IF you have the files already**.
+**SECOND**, 
+there is a ``data/fastq`` directory with a ``readme.md`` file. You must place all of your ``.fq.gz`` files in this folder **IF you have the files already**.
 Otherwise, as mentioned above, `Iliad` features a downloading step, particularly from FTP sites where open-source genomic data is hosted.
 You will need to provide a table of either Excel or CSV format as seen below. There is no header line so simply replace Sample with your unique identifier for your sample and 
 URL for the specific URL path to the FTP site that hosts the data.

@@ -30,11 +30,11 @@ human genotyping Infinium Multi-Ethic Global-8 Kit (MEGA_).
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (GCP_).
 
 
-**SNP Array Module DAG**
+**SNP Array Module Rule Graph**
 
 .. image:: img/snp_array_module_rulegraph.png
    :align: center
-   :width: 400
+   :width: 525
 
 .. toctree::
    :maxdepth: 2
@@ -87,10 +87,12 @@ If the repository is not cloned in that fashion, there is a chance that your dir
 
 In that working directory you will find there are a number of directories with files and code to run each of the module pipelines.
 
-**FIRST**, there is a ``data/snp_array/idat`` directory with a ``readme.md`` file. You must place all of your ``.idat`` files in this folder.
+**FIRST**, 
+there is a ``data/snp_array/idat`` directory with a ``readme.md`` file. You must place all of your ``.idat`` files in this folder.
 There should be two ``.idat`` files for each sample: one green ``_Grn.idat`` and one red ``_Red.idat``. 
 
-**SECOND**, there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
+**SECOND**, 
+there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
 path leading up to and including ``/Iliad`` e.g. ``/Path/To/Iliad/``. The configuration file is found in ``config/config.yaml``.
 
 .. code:: python
