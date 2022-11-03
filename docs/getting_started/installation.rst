@@ -25,6 +25,7 @@ If you have neither Conda nor Mamba, it can be installed via `Mambaforge <https:
 
 You will need to add Mamba to PATH so follow their instructions_ for such.
 
+
 Given that Mamba is installed, run
 
 .. code-block:: console
@@ -37,7 +38,9 @@ For all following commands ensure that this environment is activated via
 
 .. code-block:: console
 
-    $ conda activate snakemake
+    $ mamba activate snakemake
+
+If you're on a `Windows machine`, best use the command prompt (not powershell) in order to get into the environment.
 
 **Estimated time: 15-20 minutes**
 
