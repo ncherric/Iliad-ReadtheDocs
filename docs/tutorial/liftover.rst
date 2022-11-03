@@ -119,7 +119,7 @@ If you plan to use on a local machine or self-built server without a job schedul
 
 .. code-block:: console
 
-   $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --snakefile workflow/snpArray_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
+   $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --snakefile workflow/liftoverTo38_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
 
 However, there is a file included in the ``Iliad`` directory named - ``liftover-snakemake.sh`` that will be useful in batch job submission. 
 Below is an example snakemake workflow submission in SLURM job scheduler. 
