@@ -2,6 +2,7 @@
 .. _Mambaforge: https://github.com/conda-forge/miniforge#mambaforge
 .. _Mamba: https://github.com/mamba-org/mamba
 .. _Conda: https://conda.pydata.org
+.. _instructions: https://mamba.readthedocs.io/en/latest/installation.html
 
 
 .. _getting_started-installation:
@@ -21,6 +22,8 @@ Step 1: Install Snakemake and Snakedeploy
 
 Snakemake and Snakedeploy are best installed via the `Mamba package manager <https://github.com/mamba-org/mamba>`_ (a drop-in replacement for conda).
 If you have neither Conda nor Mamba, it can be installed via `Mambaforge <https://github.com/conda-forge/miniforge#mambaforge>`_. For other options see `here <https://github.com/mamba-org/mamba>`_.
+
+You will need to add Mamba to PATH so follow their instructions_ for such.
 
 Given that Mamba is installed, run
 
