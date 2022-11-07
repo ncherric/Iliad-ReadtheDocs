@@ -1,8 +1,8 @@
 .. _tutorial/raw_sequence:
 
-=========================
-Iliad Raw Sequence - Main
-=========================
+================================
+Iliad Raw Sequence - Main Module
+================================
 
 .. hyperlinks
 .. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html
