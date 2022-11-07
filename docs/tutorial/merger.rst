@@ -1,38 +1,81 @@
-.. _tutorial/liftover:
+.. _tutorial/merger:
 
 ==============================
-Lift Over Variants - 37 / 38
+Merge VCF Data
 ==============================
 
 .. hyperlinks
 .. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html
 .. _Snakemake: https://snakemake.readthedocs.io
-.. _Illumina: https://support.illumina.com/
-.. _merge: https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/merger.html
-
-.. _MEGA: https://support.illumina.com/array/array_kits/infinium-multi-ethnic-global-8-kit.html
 .. _GCP: https://cloud.google.com/
-.. _iaap-cli: https://support.illumina.com/downloads/iaap-genotyping-cli.html
-.. _EULA: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://support.illumina.com/content/dam/illumina-support/documents/downloads/software/iaap/Illumina%20Array%20Analysis%20Platform%20IAAP%201.1%20EULA.pdf
-.. _gtc2vcf: https://github.com/freeseek/gtc2vcf
-.. _bcftools: https://samtools.github.io/bcftools/bcftools.html
 .. _installation: https://iliad-readthedocs.readthedocs.io/en/latest/getting_started/installation.html
-.. _module: raw sequence read module here
-.. _slides: https://slides.com/johanneskoester/snakemake-tutorial
 
 
-This tutorial introduces the reference assembly version liftover `submodule` of the Iliad_ workflow developed using Snakemake workflow language.
+This tutorial introduces the basic Bcftools merge `submodule` of the Iliad_ workflow developed using Snakemake workflow language.
 Please visit Snakemake_ for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 
 automatically determining dependencies amongst the rules. A ``DAG`` (directed acyclic graph) of jobs will be built each time to account for all of the samples and jobs 
 that will executed either via job scheduler or local cores and will execute in parallel if multiple jobs are declared.
 Because of the Snakemake workflow system design, the **Iliad** workflow is scalable from single core machines to HPC clusters with job schedulers.
 
-The **Liftover submodule** is designed to re-designate genomic positions of a data file to the correct reference assembly genome (e.g. switching POS field in a VCF).
-Iliad is currently limited to switching `Homo sapiens` GRCh37 to GRCh38 and vice versa.
-We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (GCP_).
+The **Merger submodule** is designed to simplify merging VCF where conda environments are created on the fly that contain BCFtools (v1.14) and there is no need for Singlurity.
+We ensured no bioinformatics knowledge is needed to run this module with the help of internal test runs on MacOS, Windows, and HPC 
+as well as external test runs performed on Google Cloud Platform (GCP_).
 
 
-**Liftover GRCh37 to GRCh38 Submodule Rulegraph**
+Quickstart
+==========
+
+**SKIP STEP 2** Installation_ of Iliad. Singularity is not needed.
+
+.. code-block:: console
+
+   $ cd /path/to/project-workdir/Iliad/
+
+**FIRST**, there is a ``data/merge-vcf/`` directory with a ``readme.md`` file. You must place your ``.vcf.gz`` and ``.vcf.gz.(tbi/csi)`` files in this folder.
+
+**SECOND**, there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
+path leading up to and including ``/Iliad/`` e.g. ``/path/to/project-workdir/Iliad/``. The configuration file is found in ``config/config.yaml``.
+ALSO, be sure your ``workdirPath: /path/to/project-workdir/Iliad/`` in the ``config/config.yaml`` is set accordingly and with a forward slash ``/`` at the end.
+
+.. code:: python
+
+    workdirPath: /my/example/directory/Iliad/
+
+Some other parameters that are pre-set and you might consider changing to your project needs include:
+
+* Merger configuration information
+
+.. code:: python
+
+      Merger:
+         ProjectName: ExampleProject1
+
+**THIRD**,
+The user must specify which ``Snakefile`` will be invoked with 
+
+.. code-block:: console
+
+    $ snakemake --snakefile workflow/mergerSub_Snakefile
+
+and combined with other user-specified snakemake flags, ``--cores`` being a required flag.
+Users must invoke one of these e.g. ``workflow/mergerSub_Snakefile`` to perform the merge for This **MERGE VCF SUBMODULE**.
+
+If you plan to use on a local machine or self-built server without a job scheduler the default command to run is the following:
+
+.. code-block:: console
+
+   $ snakemake -p --use-conda --cores 1 --jobs 1 --snakefile workflow/mergerSub_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
+
+However, there is a file included in the ``Iliad`` directory named - ``mergerSubmodule-snakemake.sh`` that will be useful in batch job submission. 
+Below is an example snakemake workflow submission in SLURM job scheduler. 
+Please read the shell variables at the top of the script and customize to your own paths and resource needs.
+
+.. code-block:: console
+
+   $ sbatch mergerSubmodule-snakemake.sh
+
+
+**Merger Submodule Rulegraph**
 
 .. image:: img/snp_array_module_dag.png
    :align: center
@@ -66,8 +109,8 @@ Your ``vcf`` will have to be annotated and have correct rsID tags.
 
 Default workflow configurations can be found in your path to the configuration file: ``config/config.yaml``.
 
-Setup
-=====
+In-depth Setup
+==============
 
 For this module, you can **SKIP STEP 2** Installation_ of Iliad.
 You will find your new working directory within the ``path/to/project-workdir/Iliad/`` folder.

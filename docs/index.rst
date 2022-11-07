@@ -47,11 +47,14 @@ Getting started
 
 * Quickly learn how to install Iliad - visit the Installation_ page
 
-* Start processing your data right away by following along one of the `HOW-TO GUIDES` on Iliad modules
+* Start processing your data right away by following along one of the `HOW-TO GUIDES` on Iliad modules or `Submodules`
 
   *  Raw Sequence Read Data (.fq)
   *  Stored Sequence Read Data (.cram)
   *  SNP Array Data (.idat)
+
+  *  Lift Over Variants
+  *  Merge VCF Data
 
     .. make each of these into a link
 
@@ -72,8 +75,17 @@ Getting started
    tutorial/raw_sequence
    tutorial/stored_sequence
    tutorial/snp_array
-   tutorial/merge_ref_target
+
+
+.. toctree::
+   :caption: Submodules
+   :name: tutorial
+   :hidden:
+   :maxdepth: 1
+
    tutorial/liftover
+   tutorial/merger
+   tutorial/merge_ref_target
 
 .. toctree::
    :caption: Project Info
