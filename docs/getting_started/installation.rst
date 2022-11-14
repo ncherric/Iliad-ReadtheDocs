@@ -48,19 +48,53 @@ For all following commands ensure that this environment is activated via
 
     $ mamba activate iliadEnv
 
-If you're on a `Windows machine`, best use the command prompt (not powershell) in order to get into the environment.
-
 **Estimated time: 15-20 minutes**
 
 Step 2: Install Singularity
 ============================
 
-Follow the `instructions guide <https://docs.sylabs.io/guides/3.6/user-guide/quick_start.html>`_ provided by Singularity to install the program under the Operating System of your choosing.
+Follow the `instructions guide <https://docs.sylabs.io/guides/3.6/user-guide/quick_start.html>`_ provided by Singularity to install the program under the 
+Operating System of your choosing.
 If you are on an HPC server, it may have a Singularity module available to load already.
+
+Although it is highly recommended to follow the Singularity specific installation, we have some install advice that worked for us and may work best for you.
+Again, please see our specific `platform`_ preparation guides to set up your machine to this point if you are on a Windows or Mac machine. 
+Singularity cooperates best with a Linux OS. It requires GO, so the following code blocks incorporate this dependency.
+
+
+Install GO and put it in your PATH
+
+.. code-block:: console
+
+    export GOVERSION=1.18.1 OS=linux ARCH=amd64  # change these variables as you need
+    wget -O /tmp/go${GOVERSION}.${OS}-${ARCH}.tar.gz https://dl.google.com/go/go${GOVERSION}.${OS}-${ARCH}.tar.gz
+    sudo tar -C /usr/local -xzf /tmp/go${GOVERSION}.${OS}-${ARCH}.tar.gz
+    echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+    source ~/.bashrc
+
+Install Singularity
+
+.. code-block:: console
+
+    export VERSION=3.8.7 && # adjust this as necessary \
+    wget https://github.com/apptainer/singularity/releases/download/v${VERSION}/singularity-${VERSION}.tar.gz && \
+    tar -xzf singularity-${VERSION}.tar.gz && \
+    cd singularity-${VERSION}
+
+.. code-block:: console
+
+    ./mconfig && \
+    make -C ./builddir && \
+    sudo make -C ./builddir install
 
 Make sure Singularity is in your PATH and accessible by Snakemake.
 
-**Estimated time: 30-60 minutes**
+.. code-block:: console
+
+    singularity version
+
+
+**Estimated time: 15-60 minutes**
 
 Step 3: Deploy workflow
 ============================
@@ -76,32 +110,35 @@ First, create an appropriate project working directory on your system and enter 
 
 In all following steps, we will assume that you are inside of that directory.
 
-Git clone the `GitHub repository <https://github.com/ncherric/Iliad>`_.
+.. Git clone the `GitHub repository <https://github.com/ncherric/Iliad>`_.
 
-.. code-block:: console
+.. .. code-block:: console
 
-    $ git clone https://github.com/ncherric/Iliad.git
-    $ cd path/to/project-workdir/Iliad
+..     $ git clone https://github.com/ncherric/Iliad.git
+..     $ cd path/to/project-workdir/Iliad
 
 Two important folders found in the Iliad directory are **workflow** and **config**.
 The former contains rules and scripts that a designated Snakefile in Iliad call on to run a specific module.
-The latter contains configuration files which will be modified in the next step in order to configure the workflow to your needs.
-Later, when executing the workflow, Snakemake will automatically find the main Snakefile in the workflow subfolder which is the **Raw Sequence Read Data** module.
-However, there are other Snakefiles that are specific to the other Modules:
+The latter contains one configuration file ``Iliad/config/config.yaml`` which will be modified in the next step in order to configure the workflow to your needs.
+It also contains ``Excel`` files and ``TSV`` files where you will input your sample information.
+When executing the workflow, Snakemake will automatically find the main Snakefile in the workflow subfolder which is the **Raw Sequence Read Data** module.
 
-* Snakefile -> Raw Sequence Read Data
-* cram_Snakefile -> Stored Sequence Read Data
-* snpArray_Snakefile -> SNP Array Data
-* LiftoverTo38_Snakefile -> Submodule to liftover GRCh37 assembly VCF data to GRCh38 assembly
-* LiftoverTo37_Snakefile -> Submodule to liftover GRCh38 assembly VCF data to GRCh37 assembly
+However, there are other Snakefiles that are specific to the other Modules that you will have to call using ``--snakefile [desired module snakefile]``
+
+* **Snakefile** -> Raw Sequence Read Data
+* **cram_Snakefile** -> Stored Sequence Read Data
+* **snpArray_Snakefile** -> SNP Array Data
+* **LiftoverTo38_Snakefile** -> Submodule to liftover GRCh37 assembly VCF data to GRCh38 assembly
+* **LiftoverTo37_Snakefile** -> Submodule to liftover GRCh38 assembly VCF data to GRCh37 assembly
+* **merger_Snakefile** -> Submodule to merging list of VCFs
+* **mergeRefTarget_Snakefile** -> Submodule that will merge your processed Reference and Target data if you have previously completed both modules 
 
 
-Consider to put this directory under version control, e.g. by managing it via a (private) Github repository.
-Visit the Tutorial page for further info about each of the Modules in the bulleted list above.
+Visit the How-To Guides pages for further info about each of the Modules and Submodules in the bulleted list above.
 
 
-**side note**
-( Once this pipeline is publicly available, and added to the Snakemake Workflow Catalog, run below. For now, just **clone ABOVE** )
+.. **side note**
+.. ( Once this pipeline is publicly available, and added to the Snakemake Workflow Catalog, run below. For now, just **clone ABOVE** )
 
 .. code-block:: console
 
@@ -111,7 +148,28 @@ Visit the Tutorial page for further info about each of the Modules in the bullet
 Step 4: Configure Workflow
 ============================
 
-To configure this workflow, modify config/config.yaml according to your needs, following the explanations provided in the file.
+To configure this workflow, modify ``Iliad/config/config.yaml`` according to your needs. 
+The file is clearly denoted into sections that you can change according to your needs. 
+There are many defaults set that you do not have to change. The one most important change you will have to make is the following:
+
+.. code-block:: console
+
+    #####################################
+    #####################################
+    #####################################
+
+    #  #  # USER INPUT VARIABLES  #  #  #
+
+    #####################################
+    #####################################
+    #####################################
+
+    # You must insert your /PATH/TO/Iliad/
+    # use 'pwd' command to find your current working directory when you are inside of Iliad directory
+    # e.g. /path/to/Iliad/ <---- must include forward slash at the end of working directory path
+
+    # must include forward slash, '/', at the end of working directory path
+    workdirPath: /Insert/path/to/Iliad/
 
 
 Step 5: Run workflow
@@ -123,7 +181,13 @@ For running the workflow while deploying any necessary software via singularity 
 
 .. code-block:: console
 
-    $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --snakefile workflow/snpArray_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
+    $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
 
 
 Snakemake will automatically detect the main Snakefile in the workflow subfolder and execute the workflow module that has been defined by the deployment in step 2.
+
+OR you can specify a Snakefile as such (This example is for the `Stored Sequence Read Data <https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/stored_sequence.html>`_)
+
+.. code-block:: console
+
+    $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --snakefile workflow/cram_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
