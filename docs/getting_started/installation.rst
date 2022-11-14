@@ -125,14 +125,13 @@ When executing the workflow, Snakemake will automatically find the main Snakefil
 
 However, there are other Snakefiles that are specific to the other Modules that you will have to call using ``--snakefile [desired module snakefile]``
 
-* **Snakefile** -> Raw Sequence Read Data
-* **cram_Snakefile** -> Stored Sequence Read Data
-* **snpArray_Snakefile** -> SNP Array Data
-* **LiftoverTo38_Snakefile** -> Submodule to liftover GRCh37 assembly VCF data to GRCh38 assembly
-* **LiftoverTo37_Snakefile** -> Submodule to liftover GRCh38 assembly VCF data to GRCh37 assembly
-* **merger_Snakefile** -> Submodule to merging list of VCFs
-* **mergeRefTarget_Snakefile** -> Submodule that will merge your processed Reference and Target data if you have previously completed both modules 
-
+* ``--snakefile Snakefile`` -> Raw Sequence Read Data
+* ``--snakefile cram_Snakefile`` -> Stored Sequence Read Data
+* ``--snakefile snpArray_Snakefile`` -> SNP Array Data
+* ``--snakefile LiftoverTo38_Snakefile`` -> Submodule to liftover GRCh37 assembly VCF data to GRCh38 assembly
+* ``--snakefile LiftoverTo37_Snakefile`` -> Submodule to liftover GRCh38 assembly VCF data to GRCh37 assembly
+* ``--snakefile merger_Snakefile`` -> Submodule to merging list of VCFs
+* ``--snakefile mergeRefTarget_Snakefile`` -> Submodule that will merge your processed Reference and Target data if you have previously completed both modules 
 
 Visit the How-To Guides pages for further info about each of the Modules and Submodules in the bulleted list above.
 
