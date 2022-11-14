@@ -75,6 +75,7 @@ Getting started
    :maxdepth: 1
 
    getting_started/installation
+   getting_started/platform_preparation
 
 .. toctree::
    :caption: How-To Guides

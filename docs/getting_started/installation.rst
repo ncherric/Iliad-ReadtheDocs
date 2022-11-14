@@ -3,6 +3,7 @@
 .. _Mamba: https://github.com/mamba-org/mamba
 .. _Conda: https://conda.pydata.org
 .. _instructions: https://mamba.readthedocs.io/en/latest/installation.html
+.. _platform: https://github.com/freeseek/gtc2vcf
 
 
 .. _getting_started-installation:
@@ -13,32 +14,39 @@ Installation
 
 
 Iliad is Snakemake workflow management system and can be cloned from the `GitHub repository <https://github.com/ncherric/Iliad>`_.
-It largely reduces the learning curve and dependency installation by taking advantage of pre-built execution environments for Iliad, but still requires the installation of the native package manager for the Snakemake application itself and Singularity.
+It largely reduces the learning curve and software dependency installations by taking advantage of pre-built execution environments for Iliad. 
+It still requires the installation of the native package manager for the Snakemake application itself and Singularity.
+Many HPC users at an academic institution will already have Singularity on their clusters.
 
 .. _conda-install:
 
 Step 1: Install Snakemake and Snakedeploy
 =============================================
 
-Snakemake and Snakedeploy are best installed via the `Mamba package manager <https://github.com/mamba-org/mamba>`_ (a drop-in replacement for conda).
-If you have neither Conda nor Mamba, it can be installed via `Mambaforge <https://github.com/conda-forge/miniforge#mambaforge>`_. For other options see `here <https://github.com/mamba-org/mamba>`_.
+Snakemake and Snakedeploy are best installed via the `Mamba package manager <https://github.com/mamba-org/mamba>`_ (a newer package manager for Conda replacement). 
+From our testing, Conda is perfectly fine as an alternative, and you can use them interchangeably below.
+If you have neither Conda nor Mamba, it can be installed via `Mambaforge <https://github.com/conda-forge/miniforge#mambaforge>`_. 
+For other options see `here <https://github.com/mamba-org/mamba>`_.
 
 You will need to add Mamba to PATH so follow their instructions_ for such.
 
-
-Given that Mamba is installed, run
+Given that Mamba (or Conda) is installed, run the following in your command line interface tool 
+(i.e. `Putty <https://www.putty.org/>`_, 
+`MacOS Terminal <https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac>`_,
+or `VS Code <https://code.visualstudio.com/>`_).
+If you need guidance for a specific platform you are using, see the specific `platform`_ preparation guides and they will help lead you to this point.
 
 .. code-block:: console
 
-    $ mamba create -c conda-forge -c bioconda --name snakemake snakemake snakedeploy openpyxl
+    $ mamba create -c conda-forge -c bioconda --name iliadEnv snakemake snakedeploy openpyxl
 
-to install both Snakemake and Snakedeploy in an isolated environment.
+to install Snakemake, Snakedeploy, and a necessary python library for parsing user input tables in an isolated environment.
 For all following commands ensure that this environment is activated via
 
 
 .. code-block:: console
 
-    $ mamba activate snakemake
+    $ mamba activate iliadEnv
 
 If you're on a `Windows machine`, best use the command prompt (not powershell) in order to get into the environment.
 
