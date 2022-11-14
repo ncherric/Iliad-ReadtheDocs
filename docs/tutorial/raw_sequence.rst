@@ -23,18 +23,18 @@ Iliad Raw Sequence - Main Module
 
 This How-To Guide introduces the raw sequence read data processing module of the Iliad_ workflow developed using Snakemake workflow language.
 Please visit Snakemake_ for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 
-automatically determining dependencies amongst the rules. A ``DAG`` (directed acyclic graph) of jobs will be built each time to account for all of the samples and jobs 
-that will executed either via job scheduler or local cores and will execute in parallel if multiple jobs are declared.
+automatically determining dependencies amongst the rules. A ``DAG`` (directed acyclic graph) of jobs will be built each time to account for all the samples and jobs 
+that will be executed either via a job scheduler or local cores and will execute in parallel if multiple jobs are declared.
 Because of the Snakemake workflow system design, the **Iliad** workflow is scalable from single core machines to HPC clusters with job schedulers.
 
 The **Raw Sequence Module** is designed to process FASTQ sequence files, whether they are single-end or paired-end reads.
 Currently, it is most common to prepare **Reference Data** Panels from open-source Whole-Genome Sequence (WGS) data such as 1000 Genomes Project data_.
 Reference data is paramount in preparation of target data samples, especially in human research studies where biogeographical ancestry is either the variable of interest 
-or covariate in GWAS for instance.
-Depending on the level of data sharing, some research labs are unable to submit their target data to commercial Imputation services and will need to build their own **Reference Data** Panel 
+or covariate, for instance in GWAS.
+Depending on the level of data sharing, some research labs are unable to submit their target data to commercial imputation services and will need to build their own **Reference Data** Panel 
 as well as depend on open-source Imputation tools. We highly recommend Odyssey_: `a semi-automated pipeline for phasing, imputation, and analysis of genome-wide genetic data`.
 
-As sequence data gradually overtakes microarray data as the primary **Target Data** source, though, it is going to be mission critical 
+As sequence data gradually overtakes microarray data as the primary **Target Data** source, it is going to be mission critical 
 to derive research related genotypic information quickly and efficiently from raw sequence data, too.
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (GCP_).
 
