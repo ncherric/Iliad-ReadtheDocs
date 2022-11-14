@@ -54,7 +54,7 @@ Getting started
 
 * Quickly learn how to install Iliad - visit the Installation_ page
 
-* Start processing your data right away by following along one of the `HOW-TO GUIDES` on Iliad modules or `Submodules`
+* Start processing your data right away by following one of the `HOW-TO GUIDES` on Iliad modules or `Submodules`
 
   * Modules
     *  Raw Sequence Read Data (.fq)
