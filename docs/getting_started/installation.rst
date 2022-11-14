@@ -105,10 +105,14 @@ First, create an appropriate project working directory on your system and enter 
 
 .. code-block:: console
 
-    $ mkdir -p path/to/project-workdir
-    $ cd path/to/project-workdir
+    $ mkdir -p /path/to/project-workdir
+    $ cd /path/to/project-workdir
 
 In all following steps, we will assume that you are inside of that directory.
+
+.. code-block:: console
+
+    $ snakedeploy deploy-workflow https://github.com/snakemake-workflows/Iliad . --tag v1.0.0
 
 .. Git clone the `GitHub repository <https://github.com/ncherric/Iliad>`_.
 
@@ -117,31 +121,18 @@ In all following steps, we will assume that you are inside of that directory.
 ..     $ git clone https://github.com/ncherric/Iliad.git
 ..     $ cd path/to/project-workdir/Iliad
 
+Now, there should be an ``./Iliad`` directory cloned into your ``/path/to/project-workdir/`` like such ``/path/to/project-workdir/Iliad/``.
+
+
 Two important folders found in the Iliad directory are **workflow** and **config**.
-The former contains rules and scripts that a designated Snakefile in Iliad call on to run a specific module.
-The latter contains one configuration file ``Iliad/config/config.yaml`` which will be modified in the next step in order to configure the workflow to your needs.
+The ``workflow`` contains rules and scripts that a designated Snakefile in Iliad call on to run a specific module.
+The ``config`` contains one configuration file ``Iliad/config/config.yaml`` which will be modified in the next step in order to configure the workflow to your needs.
 It also contains ``Excel`` files and ``TSV`` files where you will input your sample information.
-When executing the workflow, Snakemake will automatically find the main Snakefile in the workflow subfolder which is the **Raw Sequence Read Data** module.
-
-However, there are other Snakefiles that are specific to the other Modules that you will have to call using ``--snakefile [desired module snakefile]``
-
-* ``--snakefile Snakefile`` -> Raw Sequence Read Data
-* ``--snakefile cram_Snakefile`` -> Stored Sequence Read Data
-* ``--snakefile snpArray_Snakefile`` -> SNP Array Data
-* ``--snakefile LiftoverTo38_Snakefile`` -> Submodule to liftover GRCh37 assembly VCF data to GRCh38 assembly
-* ``--snakefile LiftoverTo37_Snakefile`` -> Submodule to liftover GRCh38 assembly VCF data to GRCh37 assembly
-* ``--snakefile merger_Snakefile`` -> Submodule to merging list of VCFs
-* ``--snakefile mergeRefTarget_Snakefile`` -> Submodule that will merge your processed Reference and Target data if you have previously completed both modules 
-
-Visit the How-To Guides pages for further info about each of the Modules and Submodules in the bulleted list above.
-
 
 .. **side note**
 .. ( Once this pipeline is publicly available, and added to the Snakemake Workflow Catalog, run below. For now, just **clone ABOVE** )
 
-.. code-block:: console
 
-    $ snakedeploy deploy-workflow https://github.com/snakemake-workflows/Iliad . --tag v1.0.0
 
 
 Step 4: Configure Workflow
@@ -183,9 +174,20 @@ For running the workflow while deploying any necessary software via singularity 
     $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
 
 
-Snakemake will automatically detect the main Snakefile in the workflow subfolder and execute the workflow module that has been defined by the deployment in step 2.
+When executing the workflow, Snakemake will automatically find the main Snakefile in the workflow subfolder which is the **Raw Sequence Read Data** module.
+However, there are other Snakefiles that are specific to the other Modules that you will have to call using ``--snakefile [desired module snakefile]``
 
-OR you can specify a Snakefile as such (This example is for the `Stored Sequence Read Data <https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/stored_sequence.html>`_)
+* ``--snakefile Snakefile`` -> Raw Sequence Read Data
+* ``--snakefile cram_Snakefile`` -> Stored Sequence Read Data
+* ``--snakefile snpArray_Snakefile`` -> SNP Array Data
+* ``--snakefile LiftoverTo38_Snakefile`` -> Submodule to liftover GRCh37 assembly VCF data to GRCh38 assembly
+* ``--snakefile LiftoverTo37_Snakefile`` -> Submodule to liftover GRCh38 assembly VCF data to GRCh37 assembly
+* ``--snakefile merger_Snakefile`` -> Submodule to merging list of VCFs
+* ``--snakefile mergeRefTarget_Snakefile`` -> Submodule that will merge your processed Reference and Target data if you have previously completed both modules 
+
+Visit the How-To Guides pages for further info about each of the Modules and Submodules in the bulleted list above.
+
+This example bewlow is for the `Stored Sequence Read Data <https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/stored_sequence.html>`_
 
 .. code-block:: console
 
