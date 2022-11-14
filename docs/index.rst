@@ -17,25 +17,32 @@ ILIAD Genomic Data Pipeline
 .. image:: https://img.shields.io/badge/Singularity-≥3.6.4-blue.svg
     :target: https://docs.sylabs.io/guides/3.6/user-guide/introduction.html
 
-Iliad is a multi-functional **genomic data processing pipeline** implemented via the **Snakemake** workflow management system, Singularity or Docker container, and a handful of conda environments.
-Instances of the Singularity or Docker container and Conda environments are automatically pulled down and created to build the right execution environment during workflow runtime, making light of the numerous required bioinformatic third-party software tools and dependencies.
-The multi-functional feature is supported by a modularized Snakemake workflow design and includes independent snakemake workflows to accomodate **many forms of GENOMIC DATA** and translate them to comprehensible genotypes in a **variant call file (VCF)**.
+Iliad is a multi-functional **genomic data processing pipeline** implemented via the **Snakemake** workflow management system, Singularity or Docker container, 
+and a handful of Conda environments.
+Instances of any Singularity or Docker containers and Conda environments are automatically pulled down and 
+created to build the right execution environment during workflow runtime, making light of the numerous required bioinformatic third-party software tools and dependencies.
+The multi-functional feature is supported by a modularized Snakemake workflow design and includes independent Snakemake workflows to accommodate 
+**many forms of genomic data** and translate them to comprehensible genotypes in a **variant call file (VCF)**.
+
+These are the currently supported genomic data starting points below:
 
 * Raw Sequence Read Data (.fq)
 * Stored Sequence Read Data (.cram)
 * SNP Array Data (.idat)
 * VCF data (.vcf/.vcf.gz)
 
-Iliad is set apart by empowering genetic data management and processing for reference and target datasets, independently or simultaneously.
+Iliad is set apart by empowering genetic data management and processing for reference and target datasets independently or simultaneously.
 
 What you need to do:
 
-* **provide an FTP link** for the desired open-source raw or stored data OR
+* **Follow the Installation and How-To guides** for the appropriate module you are interested in running
+* **Add your working directory PATH** to the top of the configuration file ``Iliad/config/config.yaml``
+* **provide an FTP link** for the desired open-source raw or stored data into an Excel file found in the cloned ``Iliad/config`` directory OR
 * **migrate locally hosted data** into the cloned Iliad repository
 
 What Iliad will do:
 
-* deliver the 'GWAS data' you need for your analyses
+* deliver the *GWAS data* you need for your analyses
 
 .. _main-getting-started:
 
@@ -49,12 +56,15 @@ Getting started
 
 * Start processing your data right away by following along one of the `HOW-TO GUIDES` on Iliad modules or `Submodules`
 
-  *  Raw Sequence Read Data (.fq)
-  *  Stored Sequence Read Data (.cram)
-  *  SNP Array Data (.idat)
+  * Modules
+    *  Raw Sequence Read Data (.fq)
+    *  Stored Sequence Read Data (.cram)
+    *  SNP Array Data (.idat)
 
-  *  Lift Over Variants
-  *  Merge VCF Data
+  * Submodules
+    *  Lift Over Variants
+    *  Merge VCF Data
+    *  Merge Target and Reference Data
 
     .. make each of these into a link
 
