@@ -24,12 +24,12 @@ Iliad Raw Sequence - Main Module
 TL;DR
 =====
 
-**Please make sure that your conda environment for Iliad is activated - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``**
+**Please make sure that your conda environment for Iliad is activated** - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``
 
 Modify the configuration file ``workdirPath`` parameter to the appropriate path leading up to and including ``/Iliad`` and a final forward slash e.g. ``/Path/To/Iliad/``. 
 The configuration file is found in ``config/config.yaml``.
 
-.. code-block:: console
+.. code-block:: yaml
 
     #####################################
     #####################################
@@ -52,7 +52,7 @@ You might consider changing some other parameters to your project needs that are
 
 * Homo sapiens GRCh38 release 104 reference genome
 
-.. code:: console
+.. code:: yaml
 
     ref:
       species: homo_sapiens
@@ -91,7 +91,7 @@ you need to provide a separate ``samples.tsv`` file where the TSV file has a hea
 Example:
 
 .. list-table:: samples.tsv found in the ``/Iliad/config/`` directory
-   :widths: 25 25
+   :widths: 25
 
    * - sample
    * - KPGP-00127
