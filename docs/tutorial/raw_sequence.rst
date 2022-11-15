@@ -21,8 +21,8 @@ Iliad Raw Sequence - Main Module
 .. _slides: https://slides.com/johanneskoester/snakemake-tutorial
 
 
-TL;DR
-=====
+TL;DR setup
+===========
 
 **Please make sure that your conda environment for Iliad is activated** - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``
 
