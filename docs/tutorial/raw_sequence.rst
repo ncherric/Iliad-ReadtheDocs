@@ -52,8 +52,8 @@ Background
 ==========
 
 Sequencing data is becoming more accessible for researchers. It's primary role for years in GWAS was to serve as reference data to fill in the gaps of 
-target datasets containing large sample sizes through phasing and imputation techniques. This will still be a very important role over time because microarray data is 
-still commonly used and more sequence data means bigger and better reference sets for this purpose. Sequence data's current role, though, is already in transition for 
+target datasets containing large sample sizes through phasing and imputation techniques. This will continue to be a very important role as microarray data is 
+still commonly used and more sequence data means bigger and better reference sets for this purpose. Sequence data's current role, however, is already in transition for 
 its use as target data. The automation of the numerous steps to prepare data from a sequencer's raw output is crucial, so we developed `Iliad` with users of all levels 
 in mind to obtain variant call files with clean and reliable genotypes. It does possess the capability to be adapted and have add-ons.
 Pull requests and contributions are welcomed.
@@ -62,10 +62,10 @@ Basics
 ======
 
 The raw files from a next-generation sequencer are FASTQ files found in ``.fastq`` or ``.fq`` format, and they are often zipped ``fastq.gz`` or ``fq.gz``.
-There are instances where the data may single-end reads or paired-end reads. In the case of **paired-end reads**, sample naming schemes can and will vary, 
+There are instances where the data may be single-end reads or paired-end reads. In the case of **paired-end reads**, sample naming schemes can and will vary, 
 but will have some form of ``Sample1_R1.fq.gz`` and ``Sample1_R2.fq.gz``. Paired-end reads are sequenced from both ends of the specified DNA read length.
-`Iliad` raw sequence data module was designed to handle both types of sequence data, but was tested using paired-end reads.
-As the user, you have the choice to upload an Excel sheet or CSV file with no header and the following two fields:
+`Iliad` raw sequence data module was designed to handle both types of sequence data but was tested using paired-end reads.
+As the user, you have the choice to upload an Excel sheet or CSV file with no header and the following two columns/fields:
 
 .. code-block:: console
 
@@ -83,7 +83,7 @@ You will still need to provide a separate ``samples.tsv`` file in both situation
     SAMPLE2 sample identifier
 
 
-These ``.fq.gz`` files will undergo multiplex concatenation if needed and sent to BWA mem alignment and sorting to created a sorted.bam file and it's index. 
+These ``.fq.gz`` files will undergo multiplex concatenation if needed and sent to BWA mem alignment and sorting to create a sorted.bam file and it's index. 
 This requires a reference genome assembly and Iliad downloads the user-configured reference genome fasta files. 
 Iliad is configured to download *Homo sapiens* GRCh38 release 104 as default.
 
@@ -105,7 +105,7 @@ Setup
 Once the Installation_ of Iliad and its two dependencies has been completed, 
 you will find your new working directory within the ``PATH/TO/Iliad`` folder.
 Make sure your current working directory is in this cloned repo as stated in the installation.
-If the repository is not cloned in that fashion, there is a chance that your direcory will be improperly named as ``Iliad-main``. 
+If the repository is not cloned in that fashion, there is a chance that your directory will be improperly named as ``Iliad-main``. 
 
 .. code-block:: console
 
@@ -121,7 +121,7 @@ path leading up to and including ``/Iliad`` e.g. ``/Path/To/Iliad/``. The config
 
     workdirPath: /Path/To/Iliad/
 
-Some other parameters that are pre-set and you might consider changing to your project needs include:
+You might consider changing some other parameters to your project needs that are pre-set and include:
 
 * Homo sapiens GRCh38 release 104 reference genome
 
@@ -151,7 +151,7 @@ Otherwise, as mentioned above, `Iliad` features a downloading step, particularly
 You will need to provide a table of either Excel or CSV format as seen below. There is no header line so simply replace Sample with your unique identifier for your sample and 
 URL for the specific URL path to the FTP site that hosts the data.
 
-.. list-table:: UserSampleTable.xlsx or UserSampleTable.csv
+.. list-table:: UserSampleTable.xlsx or UserSampleTable.csv are found in the ``/Iliad/config/`` directory
    :widths: 25 25
 
    * - Sample
@@ -171,7 +171,8 @@ This means the user must specify which ``Snakefile`` will be invoked with the fo
 
     $ snakemake --snakefile workflow/Snakefile
 
-**OR** since this module is the main snakefile, Snakemake will automatically detect it without the flag.
+**OR** since this module is the main snakefile, Snakemake will automatically detect it without the flag. 
+(Please make sure that your conda environment for Iliad is activated - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``)
 
 .. code-block:: console
 
