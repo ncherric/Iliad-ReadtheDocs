@@ -76,7 +76,7 @@ Getting started
 **Iliad Workflow Schematic**
 ****************************
 
-.. image:: images/Iliad-Figure1.tif
+.. image:: /img/Iliad-Figure1.tif
    :align: center
    :width: 400
 
