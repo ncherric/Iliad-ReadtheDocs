@@ -66,9 +66,9 @@ Use an Excel sheet or CSV file with no header and the following two columns/fiel
     Sample   Unique sample identifier
     URL   raw sequence data download FTP link
 
-Example:
+Example: UserSampleTable.xlsx or UserSampleTable.csv are found in the ``/Iliad/config/`` directory
 
-.. list-table:: UserSampleTable.xlsx or UserSampleTable.csv are found in the ``/Iliad/config/`` directory
+.. list-table:: UserSampleTable.xlsx
    :widths: 25 25
 
    * - KPGP-00127
@@ -88,9 +88,9 @@ you need to provide a separate ``samples.tsv`` file where the TSV file has a hea
     SAMPLE1 sample identifier
     SAMPLE2 sample identifier
 
-Example:
+Example: samples.tsv found in the ``/Iliad/config/`` directory
 
-.. list-table:: samples.tsv found in the ``/Iliad/config/`` directory
+.. list-table:: samples.tsv
    :widths: 25
 
    * - sample
