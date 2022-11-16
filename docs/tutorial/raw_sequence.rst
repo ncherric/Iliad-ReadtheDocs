@@ -3,7 +3,7 @@
 ================================
 Iliad Raw Sequence - Main Module
 ================================
-
+##########################
 .. hyperlinks
 .. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html
 .. _Snakemake: https://snakemake.readthedocs.io
@@ -23,6 +23,7 @@ Iliad Raw Sequence - Main Module
 
 TL;DR setup
 ===========
+************
 
 **Please make sure that your conda environment for Iliad is activated** - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``
 
@@ -124,6 +125,7 @@ Please read the shell variables at the top of the script and customize to your o
 
 Information
 ===========
+************
 
 This How-To Guide introduces the raw sequence read data processing module of the Iliad_ workflow developed using Snakemake workflow language.
 Please visit Snakemake_ for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 
@@ -154,6 +156,7 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 
 Background
 ==========
+************
 
 Sequencing data is becoming more accessible for researchers. It's primary role for years in GWAS was to serve as reference data to fill in the gaps of 
 target datasets containing large sample sizes through phasing and imputation techniques. This will continue to be a very important role as microarray data is 
@@ -164,6 +167,7 @@ Pull requests and contributions are welcomed.
 
 Basics
 ======
+************
 
 The raw files from a next-generation sequencer are FASTQ files found in ``.fastq`` or ``.fq`` format, and they are often zipped ``fastq.gz`` or ``fq.gz``.
 There are instances where the data may be single-end reads or paired-end reads. In the case of **paired-end reads**, sample naming schemes can and will vary, 
@@ -205,6 +209,7 @@ each position is given a standardized ``rs ID``. The default configuration file 
 
 Setup
 =====
+************
 
 Once the Installation_ of Iliad and its two dependencies has been completed, 
 you will find your new working directory within the ``PATH/TO/Iliad`` folder.
