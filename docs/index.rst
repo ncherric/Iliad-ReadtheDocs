@@ -71,16 +71,16 @@ Getting started
       *  Merge VCF Data
 
       *  Merge Target and Reference Data
+    .. make each of these into a link
 
 
 **Iliad Workflow Schematic**
 ****************************
 
-.. image:: /docs/img/Iliad-Figure1.tif
+.. image:: /Iliad-ReadtheDocs/docs/img/Iliad-Figure1.tif
    :align: center
    :width: 400
 
-    .. make each of these into a link
 
 .. toctree::
    :caption: Getting started
