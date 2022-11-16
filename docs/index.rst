@@ -74,13 +74,11 @@ Getting started
 
 
 **Iliad Workflow Schematic**
+****************************
 
 .. image:: img/Iliad-Figure1-forReadTheDocs.png
    :align: center
    :width: 400
-
-.. toctree::
-   :maxdepth: 2
 
     .. make each of these into a link
 
