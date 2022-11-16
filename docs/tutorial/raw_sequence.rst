@@ -67,7 +67,7 @@ Use an Excel sheet or CSV file with no header and the following two columns/fiel
     Sample   Unique sample identifier
     URL   raw sequence data download FTP link
 
-Example: UserSampleTable.xlsx or UserSampleTable.csv are found in the ``/Iliad/config/`` directory
+Example: **UserSampleTable.xlsx** or **UserSampleTable.csv** are found in the ``/Iliad/config/`` directory
 
 .. list-table:: UserSampleTable.xlsx
    :widths: 25 25
@@ -89,7 +89,7 @@ you need to provide a separate ``samples.tsv`` file where the TSV file has a hea
     SAMPLE1 sample identifier
     SAMPLE2 sample identifier
 
-Example: samples.tsv found in the ``/Iliad/config/`` directory
+Example: **samples.tsv** found in the ``/Iliad/config/`` directory
 
 .. list-table:: samples.tsv
    :widths: 25
