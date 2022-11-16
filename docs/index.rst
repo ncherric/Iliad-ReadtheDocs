@@ -80,9 +80,6 @@ Getting started
    :align: center
    :width: 400
 
-.. toctree::
-   :maxdepth: 1
-
     .. make each of these into a link
 
 .. toctree::
