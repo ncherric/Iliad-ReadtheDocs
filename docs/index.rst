@@ -72,6 +72,16 @@ Getting started
 
       *  Merge Target and Reference Data
 
+
+**Iliad Workflow Schematic**
+
+.. image:: img/Iliad-Figure1.tif
+   :align: center
+   :width: 400
+
+.. toctree::
+   :maxdepth: 2
+
     .. make each of these into a link
 
 .. toctree::
