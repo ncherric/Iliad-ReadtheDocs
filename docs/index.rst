@@ -79,6 +79,8 @@ Getting started
 .. image:: img/Iliad-Figure1-forReadTheDocs.png
    :align: center
    :width: 400
+.. toctree::
+   :maxdepth: 1
 
     .. make each of these into a link
 
