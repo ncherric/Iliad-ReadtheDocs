@@ -54,17 +54,23 @@ Getting started
 
 * Quickly learn how to install Iliad - visit the Installation_ page
 
-* Start processing your data right away by following one of the `HOW-TO GUIDES` on Iliad modules or `Submodules`
+#. Start processing your data right away by following one of the `HOW-TO GUIDES` on Iliad modules or `Submodules`
 
-  * Modules
-    *  Raw Sequence Read Data (.fq)
-    *  Stored Sequence Read Data (.cram)
-    *  SNP Array Data (.idat)
+  #. Modules
 
-  * Submodules
-    *  Lift Over Variants
-    *  Merge VCF Data
-    *  Merge Target and Reference Data
+      #.  Raw Sequence Read Data (.fq)
+
+      #.  Stored Sequence Read Data (.cram)
+
+      #.  SNP Array Data (.idat)
+
+  #. Submodules
+
+      #.  Lift Over Variants
+
+      #.  Merge VCF Data
+
+      #.  Merge Target and Reference Data
 
     .. make each of these into a link
 
