@@ -50,8 +50,7 @@ The configuration file is found in ``config/config.yaml``.
 
 You might consider changing some other parameters to your project needs that are pre-set and include:
 
-* Homo sapiens GRCh38 release 104 reference genome - If you are working with CRAM files, there will be a specific reference genome associated with 
-those CRAM files.
+* Homo sapiens GRCh38 release 104 reference genome - If you are working with CRAM files, there will be a specific reference genome associated with those CRAM files.
 
 .. code:: yaml
 
