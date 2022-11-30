@@ -98,12 +98,12 @@ Example: **cramSamples.tsv** found in the ``/Iliad/config/`` directory
 
 
 
-since this module is the main snakefile, Snakemake will automatically detect it without the flag. 
+Since this module is NOT the main snakefile, Snakemake will NOT automatically detect it without the flag. 
 (Please make sure that your conda environment for Iliad is activated - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``)
 
 .. code-block:: console
 
-    $ snakemake --cores 1
+    $ snakemake --snakefile workflow/cram_Snakefile --cores 1
 
 and combined with other user-specified snakemake flags such as ``--cores``.
 
@@ -119,7 +119,7 @@ Please read the shell variables at the top of the script and customize to your o
 
 .. code-block:: console
 
-   $ sbatch snakemake.sh
+   $ sbatch cram-snakemake.sh
 
 
 Information
