@@ -3,7 +3,7 @@
 ===============
 Iliad SNP Array
 ===============
-
+##########################
 .. hyperlinks
 .. _Iliad: https://iliad-readthedocs.readthedocs.io/en/latest/index.html
 .. _Snakemake: https://snakemake.readthedocs.io
@@ -18,6 +18,112 @@ Iliad SNP Array
 .. _module: https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/raw_sequence.html
 .. _slides: https://slides.com/johanneskoester/snakemake-tutorial
 
+
+TL;DR setup
+===========
+************
+
+**Please make sure that your conda environment for Iliad is activated** - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``
+
+Modify the configuration file ``workdirPath`` parameter to the appropriate path leading up to and including ``/Iliad`` and a final forward slash e.g. ``/Path/To/Iliad/``. 
+The configuration file is found in ``config/config.yaml``.
+
+.. code-block:: yaml
+
+    #####################################
+    #####################################
+    #####################################
+
+    #  #  # USER INPUT VARIABLES  #  #  #
+
+    #####################################
+    #####################################
+    #####################################
+
+    # You must insert your /PATH/TO/Iliad/
+    # use 'pwd' command to find your current working directory when you are inside of Iliad directory
+    # e.g. /path/to/Iliad/ <---- must include forward slash at the end of working directory path
+
+    # must include forward slash, '/', at the end of working directory path
+    workdirPath: /Insert/path/to/Iliad/
+
+You might consider changing some other parameters to your project needs that are pre-set and include:
+
+* Homo sapiens GRCh38 release 104 reference genome - If you are working with CRAM files, there will be a specific reference genome associated with those CRAM files.
+
+.. code:: yaml
+
+    ref:
+      species: homo_sapiens
+      release: 104
+      build: GRCh38
+
+Use an Excel sheet or CSV file with no header and the following two columns/fields:
+
+.. code-block:: console
+
+    Sample   Unique sample identifier
+    URL   raw sequence data download FTP link
+
+Example: **cramSampleTable.xlsx** or **cramSampleTable.csv** are found in the ``/Iliad/config/`` directory
+
+.. list-table:: cramSampleTable.xlsx
+   :widths: 25 25
+
+   * - NA12718
+     - ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239480/NA12718.final.cram
+   * - NA12718
+     - ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239480/NA12718.final.cram.crai
+
+This exact template exists already in ``/Iliad/config/cramSampleTable.xlsx``. (The Excel Viewer extension on VS code is really handy for editing!)
+If you already have the sequence files and are not downloading open-source data, you have the option to place your data into the ``Iliad/results/downloads/`` directory.
+
+Whether you are automatically downloading via Iliad or you manually place data into ``Iliad/results/downloads/`` directory,
+you need to provide a separate ``cramSamples.tsv`` file where the TSV file has a header line with only one field named ``cramSample``.
+
+.. code-block:: console
+
+    sample  HEADER
+    SAMPLE1 sample identifier
+    SAMPLE2 sample identifier
+
+Example: **cramSamples.tsv** found in the ``/Iliad/config/`` directory
+
+.. list-table:: cramSamples.tsv
+   :widths: 25
+
+   * - sample
+   * - NA12718
+
+
+
+since this module is the main snakefile, Snakemake will automatically detect it without the flag. 
+(Please make sure that your conda environment for Iliad is activated - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``)
+
+.. code-block:: console
+
+    $ snakemake --cores 1
+
+and combined with other user-specified snakemake flags such as ``--cores``.
+
+If you plan to use on a local machine or self-built server without a job scheduler the default command to run is the following:
+
+.. code-block:: console
+
+   $ snakemake -p --use-singularity --use-conda --snakefile workflow/cram_Snakefile --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
+
+However, there is a file included in the ``Iliad`` directory named - ``cram-snakemake.sh`` that will be useful in batch job submission. 
+Below is an example snakemake workflow submission in SLURM job scheduler. 
+Please read the shell variables at the top of the script and customize to your own paths and resource needs.
+
+.. code-block:: console
+
+   $ sbatch snakemake.sh
+
+
+Information
+===========
+************
 
 This tutorial introduces the genome-wide SNP array data processing module of the Iliad_ workflow developed using Snakemake workflow language.
 Please visit Snakemake_ for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 
@@ -41,6 +147,7 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 
 Background
 ==========
+************
 
 Genome-wide microarray data remains one of most widely used methods to obtain genotypic information on collected DNA samples, despite the 
 growing popularity and accessibility of genotyping by sequencing.
@@ -55,6 +162,7 @@ It does possess the capability to be adapted to other microarrays. Pull requests
 
 Basics
 ======
+************
 
 The raw files from an Illumina sequencer are bead array files found in raw intensity data ``.idat`` format.
 These ``.idat`` files are to be converted into Genotype Call ``.gtc`` files using iaap-cli_ software. This software does have an 
@@ -74,6 +182,7 @@ Default thresholds, along with other default workflow configurations, can be fou
 
 Setup
 =====
+************
 
 Once the Installation_ of Iliad and its two dependencies has been completed, 
 you will find your new working directory within the ``PATH/TO/Iliad`` folder.
