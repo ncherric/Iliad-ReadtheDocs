@@ -49,8 +49,7 @@ The configuration file is found in ``config/config.yaml``.
 
 You might consider changing some other parameters to your project needs that are pre-set and include:
 
-* Homo sapiens GRCh38 release 104 reference genome - If you are working with CRAM files, there will be a specific reference genome associated with those CRAM files.
-
+* Homo sapiens GRCh38 release 104 reference genome 
 .. code:: yaml
 
     ref:
@@ -58,51 +57,30 @@ You might consider changing some other parameters to your project needs that are
       release: 104
       build: GRCh38
 
-Use an Excel sheet or CSV file with no header and the following two columns/fields:
+* Illumina MEGA_ microarray GRCh38 support and product files
+.. code:: yaml
 
-.. code-block:: console
+    urlProductFiles:
+      manifest:  https://webdata.illumina.com/downloads/productfiles/multiethnic-global-8/v1-0/build38/multi-ethnic-global-8-d2-bpm.zip
+      mzip: multi-ethnic-global-8-d2-bpm.zip
+      cluster: https://webdata.illumina.com/downloads/productfiles/multiethnic-global-8/v1-0/infinium-multi-ethnic-global-8-d1-cluster-file.zip
+      czip: infinium-multi-ethnic-global-8-d1-cluster-file.zip
 
-    Sample   Unique sample identifier
-    URL   raw sequence data download FTP link
+    urlSupportFiles:
+      physicalGeneticCoordinates: https://support.illumina.com/content/dam/illumina-support/documents/downloads/productfiles/multiethnic-global/multi-ethnic-global-8-d2-physical-genetic-coordinates.zip
+      pzip: multi-ethnic-global-8-d2-physical-genetic-coordinates.zip
+      rsidConversion: https://support.illumina.com/content/dam/illumina-support/documents/downloads/productfiles/multiethnic-global/multi-ethnic-global-8-d2-b150-rsids.zip
+      rzip: multi-ethnic-global-8-d2-b150-rsids.zip
+      rfile: Multi-EthnicGlobal_D2_b150_rsids.txt
 
-Example: **cramSampleTable.xlsx** or **cramSampleTable.csv** are found in the ``/Iliad/config/`` directory
+Place your data into the ``/Iliad/data/snp_array/idat/`` directory.
 
-.. list-table:: cramSampleTable.xlsx
-   :widths: 25 25
-
-   * - NA12718
-     - ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239480/NA12718.final.cram
-   * - NA12718
-     - ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239480/NA12718.final.cram.crai
-
-This exact template exists already in ``/Iliad/config/cramSampleTable.xlsx``. (The Excel Viewer extension on VS code is really handy for editing!)
-If you already have the sequence files and are not downloading open-source data, you have the option to place your data into the ``Iliad/results/downloads/`` directory.
-
-Whether you are automatically downloading via Iliad or you manually place data into ``Iliad/results/downloads/`` directory,
-you need to provide a separate ``cramSamples.tsv`` file where the TSV file has a header line with only one field named ``cramSample``.
-
-.. code-block:: console
-
-    sample  HEADER
-    SAMPLE1 sample identifier
-    SAMPLE2 sample identifier
-
-Example: **cramSamples.tsv** found in the ``/Iliad/config/`` directory
-
-.. list-table:: cramSamples.tsv
-   :widths: 25
-
-   * - sample
-   * - NA12718
-
-
-
-since this module is the main snakefile, Snakemake will automatically detect it without the flag. 
+Since this module is NOT the main snakefile, Snakemake will NOT automatically detect it without the ``--snakefile`` flag. 
 (Please make sure that your conda environment for Iliad is activated - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``)
 
 .. code-block:: console
 
-    $ snakemake --cores 1
+    $ snakemake --snakefile workflow/snpArray_Snakefile --cores 1
 
 and combined with other user-specified snakemake flags such as ``--cores``.
 
@@ -110,15 +88,15 @@ If you plan to use on a local machine or self-built server without a job schedul
 
 .. code-block:: console
 
-   $ snakemake -p --use-singularity --use-conda --snakefile workflow/cram_Snakefile --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
+   $ snakemake -p --use-singularity --use-conda --snakefile workflow/snpArray_Snakefile --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
 
-However, there is a file included in the ``Iliad`` directory named - ``cram-snakemake.sh`` that will be useful in batch job submission. 
+However, there is a file included in the ``Iliad`` directory named - ``snpArray-snakemake.sh`` that will be useful in batch job submission. 
 Below is an example snakemake workflow submission in SLURM job scheduler. 
 Please read the shell variables at the top of the script and customize to your own paths and resource needs.
 
 .. code-block:: console
 
-   $ sbatch snakemake.sh
+   $ sbatch snpArray-snakemake.sh
 
 
 Information
