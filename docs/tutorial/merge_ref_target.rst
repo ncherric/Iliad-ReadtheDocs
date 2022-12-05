@@ -18,6 +18,90 @@ Merge Reference and Target Data
 .. _module: raw sequence read module here
 .. _slides: https://slides.com/johanneskoester/snakemake-tutorial
 
+TL;DR setup
+===========
+************
+
+**Please make sure that your conda environment for Iliad is activated** - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``
+
+**Modify the configuration file** ``workdirPath`` parameter to the appropriate path leading up to and including ``/Iliad`` and a final forward slash e.g. ``/Path/To/Iliad/``. 
+The configuration file is found in ``config/config.yaml``.
+
+.. code-block:: yaml
+
+    #####################################
+    #####################################
+    #####################################
+
+    #  #  # USER INPUT VARIABLES  #  #  #
+
+    #####################################
+    #####################################
+    #####################################
+
+    # You must insert your /PATH/TO/Iliad/
+    # use 'pwd' command to find your current working directory when you are inside of Iliad directory
+    # e.g. /path/to/Iliad/ <---- must include forward slash at the end of working directory path
+
+    # must include forward slash, '/', at the end of working directory path
+    workdirPath: /Insert/path/to/Iliad/
+
+You might consider changing some other parameters to your project needs that are pre-set and include:
+
+* dbSNP annotations file - be sure to have proper build uncommented 
+.. code:: yaml
+
+   dbSNP:
+   # FTP site: https://ftp.ncbi.nih.gov/snp/
+   # dbsnp all file
+   # Check to see if you are using correct assembly with your project
+   #----------- 37 -------------
+   # dbsnpVcfDownload: https://ftp.ncbi.nih.gov/snp/organisms/human_9606_b151_GRCh37p13/VCF/All_20180423.vcf.gz
+   # dbsnpTbiDownload: https://ftp.ncbi.nih.gov/snp/organisms/human_9606_b151_GRCh37p13/VCF/All_20180423.vcf.gz.tbi
+   # file: All_20180423.vcf.gz
+   #----------- 38 -------------
+      dbsnpVcfDownload: https://ftp.ncbi.nih.gov/snp/organisms/human_9606_b151_GRCh38p7/VCF/All_20180418.vcf.gz
+      dbsnpTbiDownload: https://ftp.ncbi.nih.gov/snp/organisms/human_9606_b151_GRCh38p7/VCF/All_20180418.vcf.gz.tbi
+      file: All_20180418.vcf.gz
+
+* Liftover submodule variables
+.. code:: yaml
+
+   Liftover:
+   # either point to excel file or enter 1 filename for file needing converted
+   # Indicate which reference assembly you desire to switch your positions
+      filename: NEED FILENAME HERE
+      desiredVersion: GRCh38 # switch to GRCh37 if you need to revert from 38 to 37 - also uncomment the GRCh37 dbSNP section and comment out the 38 section
+
+Place your data into the ``/Iliad/data/liftover/`` directory.
+
+Since this module is NOT the main snakefile, Snakemake will NOT automatically detect it without the ``--snakefile`` flag. 
+(Please make sure that your conda environment for Iliad is activated - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``)
+
+.. code-block:: console
+
+    $ snakemake --snakefile workflow/liftoverTo38_Snakefile --cores 1
+
+and combined with other user-specified snakemake flags such as ``--cores``.
+
+If you plan to use on a local machine or self-built server without a job scheduler the default command to run is the following:
+
+.. code-block:: console
+
+   $ snakemake -p --use-singularity --use-conda --snakefile workflow/liftoverTo38_Snakefile --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
+
+However, there is a file included in the ``Iliad`` directory named - ``liftover-snakemake.sh`` that will be useful in batch job submission. 
+Below is an example snakemake workflow submission in SLURM job scheduler. 
+Please read the shell variables at the top of the script and customize to your own paths and resource needs.
+
+.. code-block:: console
+
+   $ sbatch liftover-snakemake.sh
+
+
+Information
+===========
+************
 
 This tutorial introduces the genome-wide SNP array data processing module of the Iliad_ workflow developed using Snakemake workflow language.
 Please visit Snakemake_ for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 

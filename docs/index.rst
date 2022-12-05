@@ -78,7 +78,7 @@ Getting started
 
 .. image:: tutorial/img/Iliad-Figure1-forReadTheDocs.png
    :align: center
-   :width: 400
+   :width: 600
 
 
 .. toctree::
