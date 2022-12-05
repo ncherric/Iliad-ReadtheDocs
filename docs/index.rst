@@ -35,14 +35,13 @@ Iliad is set apart by empowering genetic data management and processing for refe
 
 What you need to do:
 
-* **Follow the Installation and How-To guides** for the appropriate module you are interested in running
+* **Follow the Installation and How-To Guides** for the appropriate module you are interested in running
 * **Add your working directory PATH** to the top of the configuration file ``Iliad/config/config.yaml``
-* **provide an FTP link** for the desired open-source raw or stored data into an Excel file found in the cloned ``Iliad/config`` directory OR
-* **migrate locally hosted data** into the cloned Iliad repository
+* **provide an FTP link** for the desired open-source raw or stored data into an Excel file found in the cloned ``Iliad/config`` directory OR **migrate locally hosted data** into the cloned Iliad repository
 
 What Iliad will do:
 
-* deliver the *GWAS data* you need for your analyses
+* **Deliver the GWAS data** you need for your analyses
 
 .. _main-getting-started:
 
@@ -79,7 +78,7 @@ Getting started
 
 .. image:: tutorial/img/Iliad-Figure1-forReadTheDocs.png
    :align: center
-   :width: 600
+   :width: 400
 
 
 .. toctree::
