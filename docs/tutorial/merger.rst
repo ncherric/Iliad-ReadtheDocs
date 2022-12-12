@@ -96,7 +96,7 @@ Quickstart
 
    $ cd /path/to/project-workdir/Iliad/
 
-**FIRST**, there is a ``data/merge-vcf/`` directory with a ``readme.md`` file. You must place your ``.vcf.gz`` and ``.vcf.gz.(tbi/csi)`` files in this folder.
+**FIRST**, there is a ``/Iliad/data/merge-vcf/`` directory with a ``readme.md`` file. You must place your ``.vcf.gz`` and ``.vcf.gz.(tbi/csi)`` files in this folder.
 
 **SECOND**, there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
 path leading up to and including ``/Iliad/`` e.g. ``/path/to/project-workdir/Iliad/``. The configuration file is found in ``config/config.yaml``.
@@ -151,33 +151,31 @@ Please read the shell variables at the top of the script and customize to your o
 Background
 ==========
 
-Genetics research continues at an unprecedented speed and new reference genome assemblies encourage the use of updated positions when combining old data with new data.
-To make a comprehensive genomic pipeline, 
-we wanted to provide the means necessary for researchers to still access such a large body of data that remains important for many analyses. 
-Sometimes you just need to switch the position sites in your VCF files so you can properly merge your data with others.
-
-This module is currently limited to switching `Homo sapiens` GRCh37 to GRCh38 and vice versa.
-It is configured to those reference assembly **dbSNP annotation files**, meaning download file locations stated in `config.yaml` are provided only for GRCh37 and GRCh38. GRCh38 is the default.
-It does possess the capability to be adapted to other reference assemblies and species. Pull requests and collobarations are welcomed.
+Genetics research continues at an unprecedented speed and collaborations or newly published open-source datasets may introduce the need merge data.
+To make a comprehensive genomic pipeline, we wanted to provide the means necessary for researchers to easily combine datasets. 
+Sometimes you just need to switch the position sites in your VCF files so you can properly merge your data with others, and you may want to visit our liftover_
+submodule if you think the data you would like to combine has different reference assembly positions.
+Pull requests and collobarations are welcomed.
 
 Basics
 ======
 
 This is a minor submodule in terms of being lightweight and does not require many of the components that some of the other modules do.
-This module does not require Singularity.
+This module does require Singularity if you want to use the same version of BCFtools and do not want to download it.
 
-Genetic data compatibility is very important for analyses that involve multiple datasets so switching or updating positions will allow you to merge_ them. 
-Or, if you would like to just update your data and have the latest positions, this submodule can do so for you.
+If you have multiple independent VCF files and need the means to combine them, this module is for you.
 
-The indicated dbSNP annotation file in the ``config/config.yaml`` will be automatically downloaded and used to create a guide file that is used to swap out current sites for desired sites.
-Your ``vcf`` will have to be annotated and have correct rsID tags.
+The indicated sample list in the file ``/Iliad/data/vcf_merge/vcf-list.txt`` will be automatically read by BCFtools when running the appropriate Snakefile described here.
+Your ``vcf`` will have to be annotated and have correct rsID tags. 
+*We are currently working to add more submodule features for independent VCF annotation without requiring the use of the main modules.*
 
 Default workflow configurations can be found in your path to the configuration file: ``config/config.yaml``.
+
+By adding a project name in the configuration file, differnt merge instances will be contained in the specified project name directory automatically created.
 
 In-depth Setup
 ==============
 
-For this module, you can **SKIP STEP 2** Installation_ of Iliad.
 You will find your new working directory within the ``path/to/project-workdir/Iliad/`` folder.
 Make sure your current working directory is in this cloned repo as stated in the installation.
 ALSO, be sure your ``workdirPath: /path/to/project-workdir/Iliad/`` in the ``config/config.yaml`` is set accordingly and with a forward slash ``/`` at the end.
@@ -188,7 +186,18 @@ ALSO, be sure your ``workdirPath: /path/to/project-workdir/Iliad/`` in the ``con
 
 In that working directory you will find there are a number of directories with files and code to run each of the module pipelines.
 
-**FIRST**, there is a ``data/liftover/`` directory with a ``readme.md`` file. You must place your ``.vcf`` file in this folder.
+**FIRST**, there is a ``/Iliad/data/vcf_merge/`` directory with a ``readme.md`` file. You must place your sample list in the ``/Iliad/data/vcf_merge/vcf-list.txt`` file in the ``data/vcf_merge/`` folder.
+This list should contain the full path to your ``.vcf.gz`` files that you would like to merge - one file per line. 
+Place your data into the ``/Iliad/data/vcf_merge/`` directory for simplicity - but by providing full paths in the ``vcf-list.txt`` to data that is accessible in your system,
+ you don't have to necessarily migrate your data. There will be an auto generated directory with ``/Iliad/data/vcf_merge/`` for your specifically configured project name 
+
+
+.. list-table:: vcf-list.txt
+   :widths: 25
+
+   * - /Path/To/File1.vcf.gz
+   * - /Path/To/File2.vcf.gz
+   * - /Path/To/File3.vcf.gz
 
 **SECOND**, there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
 path leading up to and including ``/Iliad/`` e.g. ``/path/to/project-workdir/Iliad/``. The configuration file is found in ``config/config.yaml``.
@@ -199,13 +208,12 @@ path leading up to and including ``/Iliad/`` e.g. ``/path/to/project-workdir/Ili
 
 Some other parameters that are pre-set and you might consider changing to your project needs include:
 
-* Lift over configuration information
+* Merge project configuration information
+.. code:: yaml
 
-.. code:: python
+   MergerSubmodule:
+      ProjectName: NEED MERGER PROJECT NAME HERE
 
-      Liftover:
-         filenames: need-to-swap-positions-example.vcf
-         desiredVersion: GRCh38
 
 **THIRD**,
 each module pipeline has a specific ``Snakefile``.
@@ -215,24 +223,22 @@ This means the user must specify which ``Snakefile`` will be invoked with
 
 .. code-block:: console
 
-    $ snakemake --snakefile workflow/liftoverTo38_Snakefile
+    $ snakemake --snakefile workflow/mergerSub_Snakefile
 
 and combined with other user-specified snakemake flags, of course, like ``--cores``.
 
-In this module, there are two Snakefiles dedicated to which liftover the user desires: a liftoverTo38 Snakefile and a liftoverTo37 Snakefile are located in the ``workflow`` directory: 
-``workflow/liftoverTo38_Snakefile`` **AND** ``workflow/liftoverTo37_Snakefile``.
-Users must invoke one of these e.g. ``workflow/liftoverTo38_Snakefile`` to perform the desired liftover for This **LIFTOVER SUBMODULE**.
+Users must invoke this snakefile e.g. ``workflow/mergerSub_Snakefile`` to perform the desired VCF data merge for this **MERGER SUBMODULE**.
 
 If you plan to use on a local machine or self-built server without a job scheduler the default command to run is the following:
 
 .. code-block:: console
 
-   $ snakemake -p --use-conda --cores 1 --jobs 1 --snakefile workflow/liftoverTo38_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
+   $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --snakefile workflow/mergerSub_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
 
-However, there is a file included in the ``Iliad`` directory named - ``liftover-snakemake.sh`` that will be useful in batch job submission. 
+However, there is a file included in the ``Iliad`` directory named - ``mergerSub-snakemake.sh`` that will be useful in batch job submission. 
 Below is an example snakemake workflow submission in SLURM job scheduler. 
 Please read the shell variables at the top of the script and customize to your own paths and resource needs.
 
 .. code-block:: console
 
-   $ sbatch liftover-snakemake.sh
+   $ sbatch mergerSub-snakemake.sh
