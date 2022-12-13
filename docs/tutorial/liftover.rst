@@ -91,7 +91,7 @@ If you plan to use on a local machine or self-built server without a job schedul
 
 .. code-block:: console
 
-   $ snakemake -p --use-singularity --use-conda --snakefile workflow/liftoverTo38_Snakefile --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
+   $ snakemake -p --use-conda --snakefile workflow/liftoverTo38_Snakefile --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
 
 However, there is a file included in the ``Iliad`` directory named - ``liftover-snakemake.sh`` that will be useful in batch job submission. 
 Below is an example snakemake workflow submission in SLURM job scheduler. 
@@ -151,8 +151,8 @@ Your ``vcf`` will have to be annotated and have correct rsID tags.
 
 Default workflow configurations can be found in your path to the configuration file: ``config/config.yaml``.
 
-Setup
-=====
+In-depth Setup
+==============
 
 For this module, you can **SKIP STEP 2** Installation_ of Iliad.
 You will find your new working directory within the ``path/to/project-workdir/Iliad/`` folder.

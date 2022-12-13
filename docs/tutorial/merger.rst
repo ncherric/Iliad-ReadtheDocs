@@ -14,6 +14,8 @@ TL;DR setup
 ===========
 ************
 
+**SKIP STEP 2** Installation_ of Iliad. Singularity is not needed.
+
 **Please make sure that your conda environment for Iliad is activated** - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``
 
 **Modify the configuration file** ``workdirPath`` parameter to the appropriate path leading up to and including ``/Iliad`` and a final forward slash e.g. ``/Path/To/Iliad/``. 
@@ -61,7 +63,7 @@ If you plan to use on a local machine or self-built server without a job schedul
 
 .. code-block:: console
 
-   $ snakemake -p --use-singularity --use-conda --snakefile workflow/mergerSub_Snakefile --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
+   $ snakemake -p --use-conda --snakefile workflow/mergerSub_Snakefile --cores 1 --jobs 1 --default-resource=mem_mb=10000 --latency-wait 120
 
 However, there is a file included in the ``Iliad`` directory named - ``mergerSub-snakemake.sh`` that will be useful in batch job submission. 
 Below is an example snakemake workflow submission in SLURM job scheduler. 
@@ -86,60 +88,6 @@ The **Merger submodule** is designed to simplify merging VCF where conda environ
 We ensured no bioinformatics knowledge is needed to run this module with the help of internal test runs on MacOS, Windows, and HPC 
 as well as external test runs performed on Google Cloud Platform (GCP_).
 
-
-Quickstart
-==========
-
-**SKIP STEP 2** Installation_ of Iliad. Singularity is not needed.
-
-.. code-block:: console
-
-   $ cd /path/to/project-workdir/Iliad/
-
-**FIRST**, there is a ``/Iliad/data/merge-vcf/`` directory with a ``readme.md`` file. You must place your ``.vcf.gz`` and ``.vcf.gz.(tbi/csi)`` files in this folder.
-
-**SECOND**, there is a configuration file with some default parameters, however, you MUST at least change the ``workdirPath`` parameter to the appropriate 
-path leading up to and including ``/Iliad/`` e.g. ``/path/to/project-workdir/Iliad/``. The configuration file is found in ``config/config.yaml``.
-ALSO, be sure your ``workdirPath: /path/to/project-workdir/Iliad/`` in the ``config/config.yaml`` is set accordingly and with a forward slash ``/`` at the end.
-
-.. code:: python
-
-    workdirPath: /my/example/directory/Iliad/
-
-Some other parameters that are pre-set and you might consider changing to your project needs include:
-
-* Merger configuration information
-
-.. code:: python
-
-      Merger:
-         ProjectName: ExampleProject1
-
-**THIRD**,
-The user must specify which ``Snakefile`` will be invoked with 
-
-.. code-block:: console
-
-    $ snakemake --snakefile workflow/mergerSub_Snakefile
-
-and combined with other user-specified snakemake flags, ``--cores`` being a required flag.
-Users must invoke one of these e.g. ``workflow/mergerSub_Snakefile`` to perform the merge for This **MERGE VCF SUBMODULE**.
-
-If you plan to use on a local machine or self-built server without a job scheduler the default command to run is the following:
-
-.. code-block:: console
-
-   $ snakemake -p --use-conda --cores 1 --jobs 1 --snakefile workflow/mergerSub_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
-
-However, there is a file included in the ``Iliad`` directory named - ``mergerSub-snakemake.sh`` that will be useful in batch job submission. 
-Below is an example snakemake workflow submission in SLURM job scheduler. 
-Please read the shell variables at the top of the script and customize to your own paths and resource needs.
-
-.. code-block:: console
-
-   $ sbatch mergerSub-snakemake.sh
-
-
 **Merger Submodule Rulegraph**
 
 .. image:: img/snp_array_module_dag.png
@@ -161,7 +109,7 @@ Basics
 ======
 
 This is a minor submodule in terms of being lightweight and does not require many of the components that some of the other modules do.
-This module does require Singularity if you want to use the same version of BCFtools and do not want to download it.
+This module does not require Singularity.
 
 If you have multiple independent VCF files and need the means to combine them, this module is for you.
 
@@ -176,6 +124,7 @@ By adding a project name in the configuration file, differnt merge instances wil
 In-depth Setup
 ==============
 
+For this module, you can **SKIP STEP 2** Installation_ of Iliad.
 You will find your new working directory within the ``path/to/project-workdir/Iliad/`` folder.
 Make sure your current working directory is in this cloned repo as stated in the installation.
 ALSO, be sure your ``workdirPath: /path/to/project-workdir/Iliad/`` in the ``config/config.yaml`` is set accordingly and with a forward slash ``/`` at the end.
@@ -233,7 +182,7 @@ If you plan to use on a local machine or self-built server without a job schedul
 
 .. code-block:: console
 
-   $ snakemake -p --use-singularity --use-conda --cores 1 --jobs 1 --snakefile workflow/mergerSub_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
+   $ snakemake -p --use-conda --cores 1 --jobs 1 --snakefile workflow/mergerSub_Snakefile --default-resource=mem_mb=10000 --latency-wait 120
 
 However, there is a file included in the ``Iliad`` directory named - ``mergerSub-snakemake.sh`` that will be useful in batch job submission. 
 Below is an example snakemake workflow submission in SLURM job scheduler. 
