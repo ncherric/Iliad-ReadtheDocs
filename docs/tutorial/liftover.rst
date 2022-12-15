@@ -67,7 +67,7 @@ You might consider changing some other parameters to your project needs that are
       dbsnpTbiDownload: https://ftp.ncbi.nih.gov/snp/organisms/human_9606_b151_GRCh38p7/VCF/All_20180418.vcf.gz.tbi
       file: All_20180418.vcf.gz
 
-* Liftover submodule variables
+* Lift Over submodule variables
 .. code:: yaml
 
    Liftover:
@@ -106,20 +106,20 @@ Information
 ===========
 ************
 
-This tutorial introduces the reference assembly version liftover `submodule` of the Iliad_ workflow developed using Snakemake workflow language.
+This tutorial introduces the reference assembly version lift over `submodule` of the Iliad_ workflow developed using Snakemake workflow language.
 Please visit Snakemake_ for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 
 automatically determining dependencies amongst the rules. A ``DAG`` (directed acyclic graph) of jobs will be built each time to account for all of the samples and jobs 
 that will executed either via job scheduler or local cores and will execute in parallel if multiple jobs are declared.
 Because of the Snakemake workflow system design, the **Iliad** workflow is scalable from single core machines to HPC clusters with job schedulers.
 
-The **Liftover submodule** is designed to re-designate genomic positions of a data file to the correct reference assembly genome (e.g. switching POS field in a VCF).
+The **Lift Over submodule** is designed to re-designate genomic positions of a data file to the correct reference assembly genome (e.g. switching POS field in a VCF).
 Iliad is currently limited to switching `Homo sapiens` GRCh37 to GRCh38 and vice versa.
 We ensured no bioinformatics knowledge is needed to run this module with the help of external test runs performed on Google Cloud Platform (GCP_).
 
 
-**Liftover GRCh37 to GRCh38 Submodule Rulegraph**
+**Lift Over Submodule Rulegraph**
 
-.. image:: img/snp_array_module_dag.png
+.. image:: img/liftoverTo38-rulegraph.png
    :align: center
 
 .. toctree::
@@ -198,7 +198,7 @@ and combined with other user-specified snakemake flags, of course, like ``--core
 
 In this module, there are two Snakefiles dedicated to which liftover the user desires: a liftoverTo38 Snakefile and a liftoverTo37 Snakefile are located in the ``workflow`` directory: 
 ``workflow/liftoverTo38_Snakefile`` **AND** ``workflow/liftoverTo37_Snakefile``.
-Users must invoke one of these e.g. ``workflow/liftoverTo38_Snakefile`` to perform the desired liftover for This **LIFTOVER SUBMODULE**.
+Users must invoke one of these e.g. ``workflow/liftoverTo38_Snakefile`` to perform the desired liftover for This **LIFT OVER SUBMODULE**.
 
 If you plan to use on a local machine or self-built server without a job scheduler the default command to run is the following:
 

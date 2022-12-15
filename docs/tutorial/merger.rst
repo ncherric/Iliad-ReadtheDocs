@@ -90,7 +90,7 @@ as well as external test runs performed on Google Cloud Platform (GCP_).
 
 **Merger Submodule Rulegraph**
 
-.. image:: img/snp_array_module_dag.png
+.. image:: img/mergerSub-rulegraph.png
    :align: center
 
 .. toctree::

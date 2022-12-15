@@ -147,7 +147,7 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 
 **Raw Sequence Module Rule Graph**
 
-.. image:: img/raw_sequence_module_rulegraph.png
+.. image:: img/raw-seq-rulegraph.png
    :align: center
    :width: 400
 

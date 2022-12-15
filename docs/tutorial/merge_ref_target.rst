@@ -95,7 +95,7 @@ as well as external test runs performed on Google Cloud Platform (GCP_).
 
 **SNP Array Module DAG**
 
-.. image:: img/snp_array_module_dag.png
+.. image:: img/targetRefMerge-rulegraph.png
    :align: center
 
 .. toctree::

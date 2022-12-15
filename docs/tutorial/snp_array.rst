@@ -116,7 +116,7 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 
 **SNP Array Module Rule Graph**
 
-.. image:: img/snp_array_module_rulegraph.png
+.. image:: img/snpArray-rulegraph.png
    :align: center
    :width: 525
 

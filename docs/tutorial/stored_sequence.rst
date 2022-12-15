@@ -149,7 +149,7 @@ We ensured no bioinformatics knowledge is needed to run this module with the hel
 
 **Stored Sequence Module Rule Graph**
 
-.. image:: img/stored_sequence_module_rulegraph.png
+.. image:: img/stored-seq-rulegraph.png
    :align: center
    :width: 400
 
