@@ -127,7 +127,7 @@ As long as you have completed 1) the raw or stored seq modules and 2) the snp ar
 Default workflow configurations can be found in your path to the configuration file: ``config/config.yaml`` - although there are no changes necessary for this submodule.
 
 In-depth Setup
-==============
+**************
 
 **Please make sure that your conda environment for Iliad is activated** - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``
 

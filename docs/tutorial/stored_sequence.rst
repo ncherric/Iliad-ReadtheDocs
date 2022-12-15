@@ -206,9 +206,8 @@ that can be processed in parallel with job scheduling and management controlled 
 chromosome VCFs for each sample. Samples are merged at each chromosome and the ID field in the VCF is annotated using BCFtools and dbSNP annotations vcf_ so that 
 each position is given a standardized ``rs ID``. The default configuration file is set to download human_9606_b151_GRCh38p7 ``All_20180418.vcf.gz``.
 
-Setup
-=====
-************
+In-depth Setup
+**************
 
 Once the Installation_ of Iliad and its two dependencies has been completed, 
 you will find your new working directory within the ``PATH/TO/Iliad`` folder.

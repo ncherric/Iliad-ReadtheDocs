@@ -122,7 +122,7 @@ Default workflow configurations can be found in your path to the configuration f
 By adding a project name in the configuration file, differnt merge instances will be contained in the specified project name directory automatically created.
 
 In-depth Setup
-==============
+**************
 
 For this module, you can **SKIP STEP 2** Installation_ of Iliad.
 You will find your new working directory within the ``path/to/project-workdir/Iliad/`` folder.

@@ -158,9 +158,8 @@ The default configuration file is set to download human_9606_b151_GRCh38p7 ``All
 Once the ``vcf`` is processed, quality controls are performed based on the GenTrain and ClusterSep scores.
 Default thresholds, along with other default workflow configurations, can be found in your path to the configuration file: ``config/config.yaml``.
 
-Setup
-=====
-************
+In-depth Setup
+**************
 
 Once the Installation_ of Iliad and its two dependencies has been completed, 
 you will find your new working directory within the ``PATH/TO/Iliad`` folder.

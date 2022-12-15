@@ -152,7 +152,7 @@ Your ``vcf`` will have to be annotated and have correct rsID tags.
 Default workflow configurations can be found in your path to the configuration file: ``config/config.yaml``.
 
 In-depth Setup
-==============
+**************
 
 For this module, you can **SKIP STEP 2** Installation_ of Iliad.
 You will find your new working directory within the ``path/to/project-workdir/Iliad/`` folder.
