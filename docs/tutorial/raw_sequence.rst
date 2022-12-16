@@ -10,7 +10,7 @@ Iliad Raw Sequence - Main Module
 .. _data: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/
 .. _Odyssey: https://doi.org/10.1186/s12859-019-2964-5
 .. _GCP: https://cloud.google.com/
-.. _bcftools: https://samtools.github.io/bcftools/bcftools.html
+.. _Bcftools: https://samtools.github.io/bcftools/bcftools.html
 .. _installation: https://iliad-readthedocs.readthedocs.io/en/latest/getting_started/installation.html
 .. _module: https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/raw_sequence.html
 .. _protocol: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf

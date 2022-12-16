@@ -10,14 +10,12 @@ Iliad Stored Sequence
 .. _data: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/
 .. _Odyssey: https://doi.org/10.1186/s12859-019-2964-5
 .. _GCP: https://cloud.google.com/
-.. _bcftools: https://samtools.github.io/bcftools/bcftools.html
+.. _Bcftools: https://samtools.github.io/bcftools/bcftools.html
 .. _installation: https://iliad-readthedocs.readthedocs.io/en/latest/getting_started/installation.html
-.. _module: stored sequence read module here
+.. _module: https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/raw_sequence.html
 .. _protocol: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/1000G_README_2019April10_NYGCjointcalls.pdf
 .. _chr22: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20190425_NYGC_GATK/annotated/CCDG_13607_B01_GRM_WGS_2019-02-19_chr22.recalibrated_variants.annotated.txt
-.. _vcf: 
-.. _data: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/
-
+.. _vcf: https://ftp.ncbi.nih.gov/snp/organisms/human_9606_b151_GRCh38p7/VCF/
 .. _slides: https://slides.com/johanneskoester/snakemake-tutorial
 
 TL;DR setup
@@ -127,7 +125,7 @@ Information
 ************
 
 This How-To Guide introduces the stored sequence read data processing module of the Iliad_ workflow developed using Snakemake workflow language.
-Please visit Snakemake_ for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 
+Please visit Snakemake_ for specific details. They also provide informational slides_. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 
 automatically determining dependencies amongst the rules. A ``DAG`` (directed acyclic graph) of jobs will be built each time to account for all of the samples and jobs 
 that will executed either via job scheduler or local cores and will execute in parallel if multiple jobs are declared.
 Because of the Snakemake workflow system design, the **Iliad** workflow is scalable from single core machines to HPC clusters with job schedulers.
@@ -194,7 +192,7 @@ These CRAM files are already aligned, but a reference genome will be needed to p
 in the following steps, as was **originally used in the alignment** of your data! Since `Iliad` was tested with CRAM data aligned to GRCh38 reference assembly,
 `Iliad`` is configured to download *Homo sapiens* GRCh38 release 104 as default.
 
-BCFtools is used to perform mpileup and call to perform variant calling on New York Genome Center (NYGC) annotated sites. `Iliad` downloads and uses the NYGC's 
+BCFtools_ is used to perform mpileup and call to perform variant calling on New York Genome Center (NYGC) annotated sites. `Iliad` downloads and uses the NYGC's 
 annotated SNP regions file per chromosomes (link to chr22_ file) - `recalibrated_variants.annotated.txt`.
 A README file can be found concerning the annotations protocol_.
 These chromosome annotations files consume roughly 70 GB of storage, so we process the files into a simple regions file with two fields and no header: CHROM POS.
