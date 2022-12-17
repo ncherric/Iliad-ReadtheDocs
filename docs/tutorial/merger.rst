@@ -9,6 +9,10 @@ Merge VCF Data
 .. _Snakemake: https://snakemake.readthedocs.io
 .. _GCP: https://cloud.google.com/
 .. _installation: https://iliad-readthedocs.readthedocs.io/en/latest/getting_started/installation.html
+.. _slides: https://slides.com/johanneskoester/snakemake-tutorial
+.. _liftover: https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/liftover.html
+.. _module: https://iliad-readthedocs.readthedocs.io/en/latest/tutorial/raw_sequence.html
+
 
 TL;DR setup
 ===========
@@ -79,7 +83,7 @@ Information
 ************
 
 This tutorial introduces the basic Bcftools merge `submodule` of the Iliad_ workflow developed using Snakemake workflow language.
-Please visit Snakemake_ for specific details. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 
+Please visit Snakemake_ for specific details. They also provide informational slides_. In general, though, each module is composed of rules. These rules define how output files are generated from input files while 
 automatically determining dependencies amongst the rules. A ``DAG`` (directed acyclic graph) of jobs will be built each time to account for all of the samples and jobs 
 that will executed either via job scheduler or local cores and will execute in parallel if multiple jobs are declared.
 Because of the Snakemake workflow system design, the **Iliad** workflow is scalable from single core machines to HPC clusters with job schedulers.
