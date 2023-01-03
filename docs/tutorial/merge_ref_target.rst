@@ -89,7 +89,7 @@ Thus, Snakemake will call on the Iliad Singularity container for this submodule,
 We ensured no bioinformatics knowledge is needed to run this module with the help of internal test runs on MacOS, Windows, and HPC 
 as well as external test runs performed on Google Cloud Platform (GCP_).
 
-**SNP Array Module DAG**
+**Merge Reference and Target Data Submodule Rulegraph**
 
 .. image:: img/targetRefMerge-rulegraph.png
    :align: center
