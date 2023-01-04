@@ -23,7 +23,7 @@ TL;DR setup
 ===========
 ************
 
-**Please make sure that your conda environment for Iliad is activated** - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``
+**Please make sure that your conda environment for Iliad is activated** - ``conda activate iliadEnv`` or ``mamba activate iliadEnv``
 
 **Modify the configuration file** ``workdirPath`` parameter to the appropriate path leading up to and including ``/Iliad`` and a final forward slash e.g. ``/Path/To/Iliad/``. 
 The configuration file is found in ``config/config.yaml``.
