@@ -1,6 +1,6 @@
 .. _instructions: https://mamba.readthedocs.io/en/latest/installation.html
 
-.. _getting_started-platform_preparation:
+.. _getting_started/platform_preparation:
 
 ====================
 Platform Preparation

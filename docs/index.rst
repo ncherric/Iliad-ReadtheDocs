@@ -89,6 +89,7 @@ Getting started
 
    getting_started/installation
    getting_started/platform_preparation
+   getting_started/demo
 
 .. toctree::
    :caption: How-To Guides

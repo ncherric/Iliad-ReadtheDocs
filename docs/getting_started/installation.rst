@@ -6,7 +6,7 @@
 .. _platform: https://iliad-readthedocs.readthedocs.io/en/latest/getting_started/platform_preparation.html
 
 
-.. _getting_started-installation:
+.. _getting_started/installation:
 
 ============
 Installation
