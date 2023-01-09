@@ -12,7 +12,9 @@ Linux
 
 If you are on a High-Performance Cluster (HPC) or remote server that runs on a Linux OS, like Ubuntu or Red Hat for example, 
 then please follow the instructions on the previous Installation_ page!
-
+|
+|
+|
 
 Windows / PC
 ============
@@ -64,9 +66,26 @@ install mambaforge (type 'yes' to all interactive prompts)
     pwd
 
 * Step 10. Copy that location and paste into the ``Iliad/config/config.yaml`` as your working directory. This should start with ``/mnt/`` and end with a forward slash ``/`` like so  ``/mnt/Drive/Path/To/Iliad/``
-
+|
+|
+|
 
 MacOS
 =====
 
-# CHANGE THIS
+* Step 1. Download the latest version of `Oracle VM VirtualBox <"https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html#vbox">_`. 
+
+* Step 2. Use the GUI - there is an easy install that makes editing a virtual machine in the mac quite simple. This required since Singularity needs to run on Linux.
+
+* Step 3. Use a pre-made singularity container on sylabs
+
+.. code-block:: console
+
+    export VM=sylabs/singularity-ce-3.8-ubuntu-bionic64 && \
+    vagrant init $VM && \
+    vagrant up && \
+    vagrant ssh
+
+* Step 4. Gain control through the virtal machine application. This removes the need to go editing the vagrantfile.
+
+* Step 5. Increase your storage space alotted for the virtual machine.
