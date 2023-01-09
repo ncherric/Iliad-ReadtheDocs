@@ -31,9 +31,9 @@ Cloning the GitHub Repo
 .. toctree::
    :maxdepth: 2
 
-* Step 3.
+* Step 3. 
 
-   .. image:: img/Git-step3.png
+.. image:: img/Git-step3.png
    :align: center
    :width: 400
 
@@ -42,7 +42,7 @@ Cloning the GitHub Repo
 
 * Step 4.
 
-   .. image:: img/Git-step4.png
+.. image:: img/Git-step4.png
    :align: center
    :width: 400
 
@@ -51,7 +51,7 @@ Cloning the GitHub Repo
 
 * Step 5.
 
-   .. image:: img/Git-step5.png
+.. image:: img/Git-step5.png
    :align: center
    :width: 400
 
@@ -60,7 +60,7 @@ Cloning the GitHub Repo
 
 * Step 6.
 
-   .. image:: img/Git-step6.png
+.. image:: img/Git-step6.png
    :align: center
    :width: 400
 
@@ -69,16 +69,14 @@ Cloning the GitHub Repo
 
 * Step 7.
 
-   .. image:: img/Git-step7A.png
+.. image:: img/Git-step7A.png
    :align: center
    :width: 400
 
 .. toctree::
    :maxdepth: 2
 
-
-
-   .. image:: img/Git-step7B.png
+.. image:: img/Git-step7B.png
    :align: center
    :width: 400
 
@@ -87,16 +85,14 @@ Cloning the GitHub Repo
 
 * Step 8.
 
-   .. image:: img/Git-step8A.png
+.. image:: img/Git-step8A.png
    :align: center
    :width: 400
 
 .. toctree::
    :maxdepth: 2
 
-
-
-   .. image:: img/Git-step8B.png
+.. image:: img/Git-step8B.png
    :align: center
    :width: 400
 
@@ -105,16 +101,14 @@ Cloning the GitHub Repo
 
 * Step 9.
 
-   .. image:: img/Git-step9A.png
+.. image:: img/Git-step9A.png
    :align: center
    :width: 400
 
 .. toctree::
    :maxdepth: 2
 
-
-
-   .. image:: img/Git-step9B.png
+.. image:: img/Git-step9B.png
    :align: center
    :width: 400
 
@@ -123,7 +117,7 @@ Cloning the GitHub Repo
 
 * Step 10.
 
-   .. image:: img/Git-step10.png
+.. image:: img/Git-step10.png
    :align: center
    :width: 400
 
@@ -132,15 +126,14 @@ Cloning the GitHub Repo
 
 * Step 11.
 
-   .. image:: img/Git-step11A.png
+.. image:: img/Git-step11A.png
    :align: center
    :width: 400
 
 .. toctree::
    :maxdepth: 2
 
-
-   .. image:: img/Git-step11B.png
+.. image:: img/Git-step11B.png
    :align: center
    :width: 400
 
