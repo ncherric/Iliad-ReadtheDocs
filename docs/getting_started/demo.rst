@@ -1,4 +1,5 @@
 .. _link: https://github.com/ncherric/Iliad
+.. _snakemake: https://snakemake.readthedocs.io
 
 
 .. _getting_started/demo:
@@ -76,6 +77,8 @@ Cloning the GitHub Repo
 .. toctree::
    :maxdepth: 2
 
+The table will have two columns - Column 1 you input the sample ID. It is ok to have multiple repeating Sample IDs for paired-end reads and multiplexed data. Here is the tutorial file already setup: ``./Iliad/config/UserSampleTable.xlsx``
+
 .. image:: img/Git-step7B.png
    :align: center
    :width: 400
@@ -92,6 +95,8 @@ Cloning the GitHub Repo
 .. toctree::
    :maxdepth: 2
 
+It also requires you put each sample ID in a list into a text file ``./Iliad/config/samples.tsv``. One sample per line. DO NOT repeat sample IDs here.
+
 .. image:: img/Git-step8B.png
    :align: center
    :width: 400
@@ -99,7 +104,7 @@ Cloning the GitHub Repo
 .. toctree::
    :maxdepth: 2
 
-* Step 9.
+* Step 9. Run a dry run (-n) and print statements (p) -> so ``snakemake -np``. In some cases you may need to add other flags like ``--rerun-incomplete`` or ``ignore-incomplete`` or ``rerun-triggers mtime``. See the Snakemake_ documentation for appropriate usage.
 
 .. image:: img/Git-step9A.png
    :align: center
@@ -107,6 +112,8 @@ Cloning the GitHub Repo
 
 .. toctree::
    :maxdepth: 2
+
+Below is the stdout from running  ``snakemake -np``. 
 
 .. image:: img/Git-step9B.png
    :align: center
@@ -124,7 +131,7 @@ Cloning the GitHub Repo
 .. toctree::
    :maxdepth: 2
 
-* Step 11.
+* Step 11. In summary, these paired-end reads were downloaded from the open source ftp site by providing the link in this ``UserSampleTable.xlsx``. This will be the input to *Iliad*. You will have to edit this file with links to automatically download the data for your needs. For this tutorial, keep the file as is.
 
 .. image:: img/Git-step11A.png
    :align: center
@@ -132,6 +139,8 @@ Cloning the GitHub Repo
 
 .. toctree::
    :maxdepth: 2
+
+This is the output from *Iliad*. I use the ``tree`` command here just to demonstrate the file structures of the output. It will be output in ``./Iliad/results/`` directory. There you will find directories created for specific stages of output - FASTQ, sorted BAM, and VCF. 
 
 .. image:: img/Git-step11B.png
    :align: center
