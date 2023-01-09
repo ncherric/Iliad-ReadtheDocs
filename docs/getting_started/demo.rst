@@ -19,7 +19,7 @@ Cloning the GitHub Repo
 |
 .. image:: img/Git-step1.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
@@ -44,7 +44,7 @@ Cloning the GitHub Repo
 
 .. image:: img/Git-step3.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
@@ -70,7 +70,7 @@ Cloning the GitHub Repo
 
 .. image:: img/Git-step5.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
@@ -83,7 +83,7 @@ Cloning the GitHub Repo
 
 .. image:: img/Git-step6.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
@@ -96,7 +96,7 @@ Cloning the GitHub Repo
 
 .. image:: img/Git-step7A.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
@@ -109,7 +109,7 @@ The table will have two columns - Column 1 you input the sample ID. It is ok to 
 
 .. image:: img/Git-step7B.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
@@ -122,7 +122,7 @@ The table will have two columns - Column 1 you input the sample ID. It is ok to 
 
 .. image:: img/Git-step8A.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
@@ -161,7 +161,7 @@ Below is the stdout from running  ``snakemake -np``.
 
 .. image:: img/Git-step9B.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
@@ -174,7 +174,7 @@ Below is the stdout from running  ``snakemake -np``.
 
 .. image:: img/Git-step10.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
@@ -200,7 +200,7 @@ This is the output from *Iliad*. I use the ``tree`` command here just to demonst
 
 .. image:: img/Git-step11B.png
    :align: center
-   :width: 400
+   :width: 800
 
 .. toctree::
    :maxdepth: 2
