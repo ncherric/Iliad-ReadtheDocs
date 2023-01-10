@@ -1,4 +1,4 @@
-.. _projectinfo:
+.. _projectinfo/contributing:
 
 ============
 Contributing
