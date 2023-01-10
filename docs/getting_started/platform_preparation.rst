@@ -12,7 +12,7 @@ Linux
 
 If you are on a High-Performance Cluster (HPC) or remote server that runs on a Linux OS, like Ubuntu or Red Hat for example, 
 then please follow the instructions on the previous Installation_ page!
-|
+
 |
 |
 
@@ -66,7 +66,7 @@ install mambaforge (type 'yes' to all interactive prompts)
     pwd
 
 * Step 10. Copy that location and paste into the ``Iliad/config/config.yaml`` as your working directory. This should start with ``/mnt/`` and end with a forward slash ``/`` like so  ``/mnt/Drive/Path/To/Iliad/``
-|
+
 |
 |
 
