@@ -97,7 +97,7 @@ Example: **cramSamples.tsv** found in the ``/Iliad/config/`` directory
 
 
 Since this module is NOT the main snakefile, Snakemake will NOT automatically detect it without the flag. 
-(Please make sure that your conda environment for Iliad is activated - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``)
+(Please make sure that your conda environment for Iliad is activated - ``conda activate iliadEnv`` or ``mamba activate iliadEnv``)
 
 .. code-block:: console
 

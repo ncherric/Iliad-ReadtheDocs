@@ -55,7 +55,7 @@ You might consider changing some other parameters to your project needs that are
 Place your data into the ``/Iliad/data/vcf_merge/`` directory.
 
 Since this module is NOT the main snakefile, Snakemake will NOT automatically detect it without the ``--snakefile`` flag. 
-(Please make sure that your conda environment for Iliad is activated - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``)
+(Please make sure that your conda environment for Iliad is activated - ``conda activate iliadEnv`` or ``mamba activate iliadEnv``)
 
 .. code-block:: console
 

@@ -49,7 +49,7 @@ If you are running this submodule, you must first run one of the two sequence mo
 * You will not need to place your data into the ``/Iliad/data/target_ref_merge/`` directory. Iliad detects the completed files from the main modules. Merged data will be output into this directory.
 
 Since this module is NOT the main snakefile, Snakemake will NOT automatically detect it without the ``--snakefile`` flag. 
-(Please make sure that your conda environment for Iliad is activated - ``conda activate IliadEnv`` or ``mamba activate IliadEnv``)
+(Please make sure that your conda environment for Iliad is activated - ``conda activate iliadEnv`` or ``mamba activate iliadEnv``)
 
 .. code-block:: console
 
